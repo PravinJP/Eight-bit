@@ -1,4 +1,35 @@
-
-
 @import "tailwindcss";
-background-image: url('/orangebg.svg');
+
+.noise-bg-blend::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/noise.png");
+  background-repeat: repeat;
+  opacity: 0.5;
+  mix-blend-mode: multiply; /* Options: multiply, overlay, soft-light etc. */
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 0; /* Hides the scrollbar */
+  height: 0; /* Hides the horizontal scrollbar if needed */
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent; /* Optional: Makes the thumb transparent */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Optional: Makes the track transparent */
+}
+
+body {
+  @apply antialiased [text-rendering:optimizeLegibility] [font-smoothing:antialiased];
+  font-family: "Satoshi", sans-serif;
+  border: none;
+  margin: none;
+  -webkit-font-smoothing: antialiased;
+  /-moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
