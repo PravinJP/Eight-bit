@@ -1,16 +1,24 @@
-// import "./index.css";
-
-import NavBar from "./NavBar"
+import FrontPage from "./FrontPage";
+import NavBar from "./NavBar";
 
 const LandingPage = () => {
   return (
-    <div className="Landing-Page bg-[#252525] w-screen  h-[5000px] flex items-start justify-center gap-16 px-4 md:px-8 lg:px-16 py-9 bg-gradient-to-b from-[#201F01] to-[#252525]">
-        <img 
-        className="fixed -top-[500px] left-1/4 "
-        src="/bgorange.svg" alt="gradient" />
-        <NavBar />
-    </div>
-  )
-}
+    <div className="Landing-Page relative bg-[#252525] w-screen overflow-x-clip h-[5000px] flex flex-col items-center gap-16 px-4 md:px-8 lg:px-16 py-9 bg-gradient-to-b from-[#201F01] to-[#252525]">
+      
+      {/* Background Gradient Image - Positioned Absolutely Behind */}
+      <img 
+        className="absolute -top-[550px] left-1/4 +z-10" 
+        src="/bgorange.svg" 
+        alt="gradient" 
+      />
+      
+      {/* Sticky/Top NavBar */}
+      <NavBar />
 
-export default LandingPage
+      {/* Main Content */}
+      <FrontPage />
+    </div>
+  );
+};
+
+export default LandingPage;
