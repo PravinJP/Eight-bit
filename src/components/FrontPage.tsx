@@ -9,7 +9,7 @@ const FrontPage = () => {
       </div>
       <div className="font-poppins line2 text-[72px] line-height-[87px] letter-spacing-[-2px] text-white">Your Vision,Engineered <br /> Web,Saas & Mobile Solutions</div>
       <div className="font-poppins line3 text-[28px] line-spacing-[34px] letter-spacing-[-0.6] text-white">Expertly crafted products -from design to deployment,<br />built to help startups,SMEs,and enterprise</div>
-      <div className="action-button-container flex ml-auto mt-6">
+      <div className="action-button-container flex ml-auto mt-6"> 
         <button className="text-black font-inter bg-white font-semibold text-[20] line-spacing-[32px] w-[32] h-[32]  px-4 py-3 rounded-3xl transition-colors flex gap-2 ">
           Learn more
           <img className="w-[24px] h-[24px]"src="/arrowlogo.svg" alt="" />
