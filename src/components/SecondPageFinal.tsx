@@ -24,7 +24,7 @@ const SecondPageFinal = () => {
           </p>
         </div>
         <div className="w-[827px] h-[182.5px] gap-auto flex flex-row mt-8">
-          <div  className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between">
             <div className=" w-[318.5px] h-[39.5px] flex flex-row gap-[10px]">
               <img
                 className="w-[39.5px] h-[39.5px]"
@@ -92,19 +92,24 @@ const SecondPageFinal = () => {
       </div>
       <div className="flex w-full h-full gradient-border-wrapper">
         <div className=" relative w-full h-full  rounded-[24px] gap-[-90px]  bg-[#201F01] gradient-border-inner  items-center justify-center flex flex-col overflow-clip ">
-        <div className="flex w-full h-full gradient-border-wrapper-top rounded-b-3xl"><div className=" w-full h-full  rounded-[22px]  bg-[#201F01]/50   backdrop-blur-[100px]"/></div>
-      
-        <div className="  flex items-center justify-center p-6 h-full rounded-[19.2px] top-1/2 right-1/2 aspect-square -my-[90px]  bg-white/5 backdrop-blur-2xl">
-        <img className="w-3/4" src="/rising-logo-orange.svg" alt="" /></div>
-        <div className="flex w-full h-full gradient-border-wrapper-bottom rounded-t-3xl "><div className=" absolute w-full h-full  rounded-[22px]  bg-[#201F01]/50   backdrop-blur-[10px]"><img className=" absolute -bottom-0    w-200 aspect-square " src="/orange2.svg" alt="" /></div>
+          <div className="flex w-full h-full gradient-border-wrapper-top rounded-b-3xl">
+            <div className=" w-full h-full  rounded-[22px]  bg-[#201F01]/50   backdrop-blur-[100px]" />
+          </div>
+
+          <div className="  flex items-center justify-center p-6 h-full rounded-[19.2px] top-1/2 right-1/2 aspect-square -my-[90px]  bg-white/5 backdrop-blur-2xl">
+            <img className="w-3/4" src="/rising-logo-orange.svg" alt="" />
+          </div>
+          <div className="flex w-full h-full gradient-border-wrapper-bottom rounded-t-3xl ">
+            <div className=" absolute w-full h-full  rounded-[22px]  bg-[#201F01]/50   backdrop-blur-[10px] gradient-border-inner">
+              <img
+                className=" absolute -bottom-0    w-200 aspect-square "
+                src="/orange2.svg"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
-        
-        
-
-
       </div>
-      </div>
-      
     </div>
   );
 };

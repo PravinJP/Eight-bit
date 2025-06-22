@@ -1,8 +1,17 @@
+
 import FrontPage from "./FrontPage";
 import NavBar from "./NavBar";
 import SecondPageFinal from "./SecondPageFinal";
+import ThirdPage from "./ThirdPage";
+import Test from "./ThirdPage";
+
+
+
 
 const LandingPage = () => {
+
+  
+
   return (
     <div className="Landing-Page relative bg-gradient-to-b from-[#201F01] to-[#212121]  noise-bg-blend w-screen overflow-x-clip h-[5000px] flex flex-col items-center gap-16 px-4 md:px-8 lg:px-16 py-9 z-[-2]bg-gradient-to-b from-[#201F01] to-[#252525]">
        
@@ -20,6 +29,10 @@ const LandingPage = () => {
       <FrontPage />
 
       <SecondPageFinal/>
+
+      
+      <ThirdPage/>
+      
     </div>
   );
 };
