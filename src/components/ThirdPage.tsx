@@ -43,25 +43,25 @@ const comps: ComponentElements[] = [
 
   return (
     
-      <div className="w-full h-[857.81px] p-9 gap-4 flex  flex-col justify-start items-center">
-        <div className="w-[674px] h-[216px] flex flex-col justify-center items-center text-center">
+      <div className="w-full  p-9 gap-12 flex  flex-col justify-center items-center">
+        
         {/* Button Container */}
         <div className="action-button-container mb-4">
-          <button className="h-[50px] gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-semibold flex items-center text-white">
+          <button className=" gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-medium flex items-center text-white">
             All About us
             <img className="w-[24px] h-[24px] " src="/about us.svg" alt="" />
           </button>
         </div>
 
         {/* Text Block */}
-        <div>
-          <p className="text-5xl text-white leading-snug">
+        
+          <div className="text-5xl bg-gradient-to-r from-[#383838] to-[#ffffff] bg-clip-text text-transparent  flex text-center py-2 -mt-4">
             The Key benefits of <br />
             partnering
-          </p>
-        </div>
-      </div>
-      <div className=" w-[1000px] h-[550px] grid items-center grid-cols-3 row-end-2 gap-10">
+          </div>
+        
+      
+      <div className=" w-[1000px]  grid items-center grid-cols-3 row-end-2 gap-10 ">
         {comps.map((com,idx)=>(
     
       <div key={idx}  className="">

@@ -1,0 +1,36 @@
+<svg width="318" height="180" viewBox="0 0 318 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_dfn_543_313)">
+<ellipse cx="80.5" cy="210.312" rx="144.5" ry="117" fill="url(#paint0_radial_543_313)"/>
+<path d="M80.5 77.8027C165.651 77.8027 240.509 134.231 240.509 210.312C240.509 286.392 165.651 342.82 80.5 342.82C-4.65147 342.82 -79.5088 286.392 -79.5088 210.312C-79.5088 134.231 -4.65147 77.8027 80.5 77.8027Z" stroke="#FF5100" stroke-width="31.017"/>
+</g>
+<defs>
+<filter id="filter0_dfn_543_313" x="-156.927" y="0.384453" width="474.854" height="419.854" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="16.1289" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_543_313"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="22.8906"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.427451 0 0 0 0 0.00784314 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_543_313"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_543_313" result="shape"/>
+<feGaussianBlur stdDeviation="20.2231" result="effect2_foregroundBlur_543_313"/>
+<feTurbulence type="fractalNoise" baseFrequency="1.4285714626312256 1.4285714626312256" stitchTiles="stitch" numOctaves="3" result="noise" seed="110" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect2_foregroundBlur_543_313" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect3_noise_543_313">
+<feMergeNode in="effect2_foregroundBlur_543_313" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<radialGradient id="paint0_radial_543_313" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(80.5 210.312) rotate(93.8589) scale(191.994 236.751)">
+<stop stop-color="#FFC533"/>
+<stop offset="1" stop-color="#FF6A01"/>
+</radialGradient>
+</defs>
+</svg>

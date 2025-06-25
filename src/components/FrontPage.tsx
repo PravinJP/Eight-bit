@@ -1,24 +1,27 @@
-
-
 const FrontPage = () => {
   return (
-    <div className="w-full max-w-[1390px] h-[568px] gap-y-24 pb-8 align-left">
-      <div className="first-line w-fill  h-[39.5] flex flex-row align-left items-center gap-2 mr-auto ">
-        <img  className="mt-10 " src="/pic1.svg" alt="Illustration" />
-        <p className=" font-poppins mt-10 text-[28px] text-white">build,launch and scale</p>
+    <div className="w-full max-w-[1390px]  gap-8 flex flex-col align-left h-[70vh]">
+      <div className="first-line w-fill   flex flex-row align-left items-center gap-2 mr-auto ">
+        <img className="mt-10 " src="/pic1.svg" alt="Illustration" />
+        <p className=" font-poppins mt-10 text-[28px] text-white">
+          build,launch and scale
+        </p>
       </div>
-      <div className="font-poppins line2 text-[72px] line-height-[87px] letter-spacing-[-2px] text-white">Your Vision,Engineered <br /> Web,Saas & Mobile Solutions</div>
-      <div className="font-poppins line3 text-[28px] line-spacing-[34px] letter-spacing-[-0.6] text-white">Expertly crafted products -from design to deployment,<br />built to help startups,SMEs,and enterprise</div>
-      <div className="action-button-container flex ml-auto mt-6"> 
-        <button className="text-black font-inter bg-white font-semibold text-[20] line-spacing-[32px] w-[32] h-[32]  px-4 py-3 rounded-3xl transition-colors flex gap-2 ">
-          Learn more
-          <img className="w-[24px] h-[24px]"src="/arrowlogo.svg" alt="" />
-        </button>
+      <div className="font-poppins leading-[72px] text-[72px]  text-white">
+        Your Vision,Engineered <br /> Web,Saas & Mobile Solutions
+      </div>
+      <div className="font-poppins line3 text-[28px]  text-white">
+        Expertly crafted products -from design to deployment,
+        <br />
+        built to help startups,SMEs,and enterprise
       </div>
 
+      <button className="text-black  bg-white font-medium text-2xl px-7 py-5 rounded-3xl transition-colors flex gap-2 mr-auto">
+        Learn more
+        <img className="w-[24px] h-[24px]" src="/arrowlogo.svg" alt="" />
+      </button>
     </div>
   );
 };
 
 export default FrontPage;
-  

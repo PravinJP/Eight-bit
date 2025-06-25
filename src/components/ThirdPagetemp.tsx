@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 type Item = {
   id: number;
   topic: string;
@@ -35,18 +33,27 @@ const MapComponent: React.FC = () => {
       </div>
       <div className="w-[1056px] h-[266.25px] flex gap-[40.5px]">
         {items.map((item, index) => (
-          <div className="   gap-[104.5px] px-[5.63px] py-[5.63px] gradient-border-wrapper">
-            <div className="w-[287px] px-[46px] py-[18px] rounded-[14.63px] gradient-border-inner flex flex-wrap">
-              <div className="w-[195px]  flex flex-col justify-center items-start">
-
+          <div
+            key={index}
+            className="  px-[5.63px] relative py-[5.63px] gradient-border-wrapper"
+          >
+            <div className=" px-[46px] py-[18px] rounded-[14.63px] gradient-border-inner flex flex-wrap">
+              <div className="  flex flex-col justify-center items-start">
                 <div className="flex flex-wrap justify-center items-center text-center">
-                  <p className=" text-2xl text-white whitespace-normal break-words">{item.topic}</p>
+                  <p className=" text-2xl text-white whitespace-normal break-words">
+                    {item.topic}
+                  </p>
                 </div>
-                <div className="w-[185px] h-[155px] flex justify-center items-center">
-                  <div className="w-[90px] h-[90px] rounded-4xl flex items-center justify-center  bg-white/5 backdrop-blur-2xl"><img className="w-[54.84px] h-[54.84px]" src={item.image} alt="" /></div>
+                <div className="absolute bottom-1/3 flex justify-center items-center">
+                  <div className="rounded-4xl flex items-center justify-center  bg-white/5 backdrop-blur-2xl">
+                    <img
+                      className="w-[54.84px] h-[54.84px]"
+                      src={item.image}
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
-              <div className=" flex w-[185.06px] h-[140.63px]  bg-white/5 backdrop-blur-5xl"></div>
             </div>
           </div>
         ))}

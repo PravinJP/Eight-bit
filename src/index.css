@@ -1,21 +1,16 @@
 
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600;700&display=swap');
 
 
 
-
-.font-poppins {
-  font-family: 'Poppins', sans-serif;
+.vt323-regular {
+  font-family:url("../../Eight-bit/public/retro_computer_personal_use.ttf");
+  font-weight: 400;
+  font-style: normal;
 }
 
-.font-inter {
-  font-family: 'Inter', sans-serif;
-}
-.font-bai {
-  font-family: 'Bai Jamjuree', sans-serif;
+root{
+  font-family: "Poppins";
 }
 
 .noise-bg-blend::before {
@@ -27,6 +22,7 @@
   opacity: 0.5;
   mix-blend-mode: multiply; /* Options: multiply, overlay, soft-light etc. */
   pointer-events: none;
+  
 }
 
 .gradient-border-wrapper {
@@ -51,6 +47,37 @@
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
    /* outer radius */
 }
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+.gradient-text {
+  
+  
+}
+.gradient-text-2 {
+  background: linear-gradient(to right, #FF6A01, #FFC533);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gradient-border-wrapper-2 {
+   /* border thickness */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+  border-radius: 12px; /* outer radius */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+
 
 
 
