@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const SecondPageFinal = () => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setShow(true), 50);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <div className="w-full  flex flex-row max-w-[1390px]">
-      <div className="w-full  gap-[12px] justify-between flex flex-col">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={show ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="w-full  gap-[12px] justify-between flex flex-col"
+      >
         <div className="action-button-container flex">
           <button className=" gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-semibold flex items-center text-white">
             About us
@@ -87,8 +100,14 @@ const SecondPageFinal = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex w-full  gradient-border-wrapper">
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={show ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+        className="flex w-full  gradient-border-wrapper"
+      >
         <div className=" relative w-full   rounded-[24px] gap-[-90px]  bg-[#201F01] gradient-border-inner  items-center justify-center flex flex-col overflow-clip ">
           <div className="flex w-full h-full gradient-border-wrapper-top rounded-b-3xl">
             <div className=" w-full h-full  rounded-[22px]  bg-[#201F01]/50   backdrop-blur-[100px]" />
@@ -107,7 +126,7 @@ const SecondPageFinal = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
