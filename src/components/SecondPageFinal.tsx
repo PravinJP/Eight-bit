@@ -113,13 +113,13 @@ const SecondPageFinal = () => {
             <div className=" w-full h-full  rounded-[22px]  bg-[#201F01]/50   backdrop-blur-[100px]" />
           </div>
 
-          <div className="  flex items-center justify-center p-6 h-full rounded-[19.2px] top-1/2 right-1/2 aspect-square -my-[90px]  bg-white/5 backdrop-blur-2xl">
+          <div className="  flex items-center justify-center p-6 h-full rounded-[19.2px] top-1/2 right-1/2 aspect-square -my-[90px]  bg-white/5 backdrop-blur-2xl z-10">
             <img className="w-3/4" src="/rising-logo-orange.svg" alt="" />
           </div>
           <div className="flex w-full h-full gradient-border-wrapper-bottom rounded-t-3xl ">
             <div className=" absolute w-full h-full  rounded-[22px]  bg-[#201F01]/50   backdrop-blur-[10px] gradient-border-inner">
               <img
-                className=" absolute -bottom-0    w-200 aspect-square "
+                className=" absolute -bottom-30    w-200 aspect-square "
                 src="/orange2.svg"
                 alt=""
               />

@@ -8,8 +8,8 @@ const Footer = () => {
         {/* Right-Side */}
         <div className="absolute w-[600px] gap-6 top-30 left-30 z-10">
           <div>
-            <p className="w-full gap-1.5 text-6xl font-medium text-white">
-              So. What are you waiting for ?
+            <p className="w-full gap-1.5 text-5xl font-medium text-white">
+              So. What are you <br /> waiting for ?
             </p>
             <p className="text-2xl mt-2 text-white">
               Contact us and get the deal done
@@ -28,7 +28,7 @@ const Footer = () => {
 
       {/* down-footer */}
       <div className="w-full h-[306px] gap-2.5 py-8 mt-4">
-        {/* ✅ This is the only part changed */}
+        
         <div className="flex flex-row justify-between">
           {/* left */}
           <div>
