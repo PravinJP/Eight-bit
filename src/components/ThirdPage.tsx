@@ -10,7 +10,7 @@ export interface ComponentElements {
 const Test = () => {
   const comps: ComponentElements[] = [
     {
-      title: <h1>Tailored <br /> Digital Solutions</h1>,
+      title: <h1>Tailored Digital Solutions</h1>,
       imgUrl: "3rdPage.svg",
     },
     {
@@ -18,7 +18,11 @@ const Test = () => {
       imgUrl: "3rdPage.svg",
     },
     {
-      title: <h1>Faster Time <br /> to Market</h1>,
+      title: (
+        <h1>
+          Faster Time <br /> to Market
+        </h1>
+      ),
       imgUrl: "3rdPage.svg",
     },
     {
@@ -47,11 +51,11 @@ const Test = () => {
         <motion.button
           initial={{ backgroundColor: "rgba(255,255,255,0.1)" }}
           whileInView={{
-            backgroundColor: "rgba(255,165,0,0.2)",
+            backgroundColor: "rgba(255,255,255,0.1)",
             transition: { duration: 0.6, ease: "easeOut" },
           }}
           viewport={{ once: true }}
-          className="gap-[10px] px-[18px] py-[16px] backdrop-blur-2xl rounded-[32px] text-xl font-medium flex items-center text-white"
+          className="gap-[10px] px-[18px] py-[16px]  backdrop-blur-2xl rounded-[32px] text-xl font-medium flex items-center text-white"
         >
           All About us
           <img className="w-[24px] h-[24px]" src="/about us.svg" alt="" />

@@ -48,94 +48,80 @@ export const itemVariants = {
 const TechStacksScroller: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Track the scroll progress of the div with correct offset
   const { scrollYProgress } = useScroll({
     target: scrollRef,
     offset: ["start start", "end end"],
   });
 
-  // Transform scroll progress into numbers
-  const progressMotion = useTransform(scrollYProgress, [0, 1], [0, 300]);
-
-  // State to store number values
   const [progress, setProgress] = useState(0);
 
-  // Convert MotionValue to numbers
-  useMotionValueEvent(progressMotion, "change", (v) => setProgress(v));
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const transformed = latest * 300;
+    setProgress(transformed);
+    console.log("Scroll Progress:", transformed);
+  });
 
-  useEffect(() => {
-    progressMotion.on("change", (value) => {
-      console.log("Scroll Progress:", value);
-    });
-  }, [progressMotion]);
-
-const currentImage = useMemo(() => {
-  if (progress <= 100) return "/project1.svg";
-  if (progress > 100 && progress <= 200) return "/project1.svg";
-  return "/project1.svg";
-}, [progress]);
-
+  const currentImage = useMemo(() => {
+    if (progress <= 100) return "/project1.svg"; // for MyBiz App
+    if (progress > 100 && progress <= 200) return "/project2.svg"; // for WEB DEVELOPMENT
+    return "/image3.png"; // for DESIGN SYSTEMS
+  }, [progress]);
 
   return (
-    <div ref={scrollRef} className="scroll-space h-[3000px]   relative ">
-      <div
-        className="outer-container-for-scroller w-full mx-auto max-w-[1290px] px-4 md:px-6 lg:px-8  sticky top-18 md:top-32   z-50 
-     "
-      >
-        <div className="floating-container flex flex-col md:flex-row gap-8 w-full ">
+    <div ref={scrollRef} className="scroll-space h-[3000px] relative">
+      <div className="outer-container-for-scroller w-full mx-auto max-w-[1290px] px-4 md:px-6 lg:px-8 sticky top-18 md:top-32 z-50">
+        <div className="floating-container flex flex-col md:flex-row gap-8 w-full">
           {/* left side */}
-          <div className="left-side flex flex-col flex-5 gap-4 md:gap-8  w-full">
+          <div className="left-side flex flex-col flex-5 gap-4 md:gap-8 w-full">
             <TechStack
               loadingPercentage={progress}
               isCondensed={progress <= 100}
               title="MyBiz App Mobile App | SaaS"
               subtitle="A robust B2B app designed to streamline business workflows and analytics."
               barColor="FF6A01"
-              barBgColor="6A0A27" techStacks={[]}            />
+              barBgColor="ffff"
+              techStacks={[]}
+            />
             <TechStack
               loadingPercentage={progress % 100}
               isCondensed={progress > 100 && progress <= 200}
               title="WEB DEVELOPMENT"
               subtitle="I build high-performance, scalable web apps using modern frameworks and tools, tailored for real-world use cases across industries."
-              techStacks={[
-                
-              ]}
-              barColor="55C37B"
-              barBgColor="245C3A"
+              techStacks={[]}
+              barColor="FF6A01"
+              barBgColor="ffff"
             />
             <TechStack
               loadingPercentage={progress % 200}
               isCondensed={progress > 200 && progress <= 300}
               title="DESIGN SYSTEMS"
               subtitle="Creating consistent, scalable, and reusable UI components across platforms with a strong foundation in UX, accessibility, and design tokens."
-              techStacks={[
-                
-              ]}
-              barColor="4A7DFF"
-              barBgColor="1F3B80"
+              techStacks={[]}
+              barColor="FF6A01"
+              barBgColor="ffff"
             />
           </div>
+
           {/* right side */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="right-side-video-player w-full flex-4 flex "
+            className="right-side-video-player w-full flex-4 flex"
           >
             <AnimatePresence mode="wait">
-  <motion.img
-    key={currentImage}
-    src={currentImage}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{ duration: 0.4 }}
-    className="w-full h-[calc(100vh/3)] md:h-[calc(100vh/1.5)] self-center rounded-3xl object-cover object-center px-1.5"
-    alt="Tech stack visual"
-  />
-</AnimatePresence>
-
+              <motion.img
+                key={currentImage}
+                src={currentImage}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="w-full h-[calc(100vh/3)] md:h-[calc(100vh/1.5)] self-center rounded-3xl object-cover object-center px-1.5"
+                alt="Tech stack visual"
+              />
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>
@@ -145,6 +131,7 @@ const currentImage = useMemo(() => {
 
 export default TechStacksScroller;
 
+// TechStack component
 interface TechStackProps {
   title: string;
   subtitle: string;
@@ -152,7 +139,7 @@ interface TechStackProps {
   barColor: string;
   barBgColor: string;
   isCondensed: boolean;
-  loadingPercentage: number; //0-100
+  loadingPercentage: number;
 }
 
 const TechStack: React.FC<TechStackProps> = ({
@@ -171,13 +158,29 @@ const TechStack: React.FC<TechStackProps> = ({
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="text-white   text-[clamp(18px,2vw,24px)] text-start w-full font-bold "
+        className="text-white text-[clamp(18px,2vw,24px)] text-start w-full font-bold"
       >
         {title}
       </motion.h3>
     ),
     []
   );
+
+  const subtitleComp = useMemo(
+    () => (
+      <motion.h4
+        variants={textVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        className="text-white text-[clamp(16px,3vw,24px)] text-start font-regular"
+      >
+        {subtitle}
+      </motion.h4>
+    ),
+    []
+  );
+
   const specialTexts = useMemo(
     () => (
       <motion.div
@@ -196,20 +199,6 @@ const TechStack: React.FC<TechStackProps> = ({
     []
   );
 
-  const subtitleComp = useMemo(
-    () => (
-      <motion.h4
-        variants={textVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        className="text-white text-[clamp(16px,3vw,24px)] text-start font-regular  "
-      >
-        {subtitle}
-      </motion.h4>
-    ),
-    []
-  );
   if (!isCondensed)
     return (
       <motion.h3
@@ -217,19 +206,20 @@ const TechStack: React.FC<TechStackProps> = ({
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="text-white/50 text-[clamp(12px,2vw,24px)]  text-start w-full font-regular "
+        className="text-white/50 text-[clamp(12px,2vw,24px)] text-start w-full font-regular"
       >
         {title}
       </motion.h3>
     );
+
   return (
-    <motion.div className="tech-stack-container flex flex-row  gap-3 md:gap-6 w-full">
+    <motion.div className="tech-stack-container flex flex-row gap-3 md:gap-6 w-full">
       <motion.div
         variants={barVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="loading-bar-container w-1 md:w-2 min-h-full rounded-2xl overflow-clip "
+        className="loading-bar-container w-1 md:w-2 min-h-full rounded-2xl overflow-clip"
         style={{ backgroundColor: `#${barBgColor}` }}
       >
         <div
@@ -237,7 +227,7 @@ const TechStack: React.FC<TechStackProps> = ({
           style={{
             backgroundColor: `#${barColor}`,
             height: `${loadingPercentage}%`,
-            transition: "height ",
+            transition: "height",
           }}
         >
           <h1 className="hidden">dummy-text-which-is-not-visible</h1>
@@ -253,6 +243,7 @@ const TechStack: React.FC<TechStackProps> = ({
   );
 };
 
+// SpecialText component
 interface SpecialTextProps {
   text: string;
   cancelMargin?: boolean;
@@ -325,7 +316,7 @@ export const SpecialText: React.FC<SpecialTextProps> = ({
         margin: cancelMargin ? "0px" : "",
         cursor: link ? "pointer" : "",
       }}
-      className="flex w-full text-center  items-center  justify-center-safe  text-[clamp(14px,1.5vw,18px)] font-regular  text-white px-3 py-2 mx-1 leading-tight bg-white/5 backdrop-blur-3xl outline-[2px] outline-[#663BFF]/60 rounded-xl"
+      className="flex w-full text-center items-center justify-center-safe text-[clamp(14px,1.5vw,18px)] font-regular text-white px-3 py-2 mx-1 leading-tight bg-white/5 backdrop-blur-3xl outline-[2px] outline-[#663BFF]/60 rounded-xl"
     >
       {text}
     </motion.div>
