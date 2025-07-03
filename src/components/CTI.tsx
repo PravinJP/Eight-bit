@@ -4,10 +4,10 @@ const CTI = () => {
   return (
     <div className='w-full gap-2.5 px-9'>
         <div className=' relative w-full h-[379px] flex justify-center items-center rounded-4xl overflow-clip'>
-            <img className="absolute top-[-0px]" src="/ctiellipse.svg" alt="" />
+            <img className="absolute top-[-0px] z-10" src="/ctiellipse.svg" alt="" />
             <img className="absolute left-[-100px] bottom-[-50px]"   src="/ctiellipse2.svg" alt="" />
 
-            <div className=" flex justify-center items-center flex-col">
+            <div className=" flex justify-center items-center flex-col z-0">
                 <div>
                 <p className="text-center text-white text-5xl font-medium">Innovate. Build. Grow. <br /> End-to-End Web, App & SaaS Development.</p>
             </div>

@@ -24,7 +24,7 @@ const SecondPageFinal = () => {
           </button>
         </div>
         <div className="action-button-container flex  mt-4">
-          <p className="text-5xl medium text-white">
+          <p className="text-5xl medium text-white leading-tight">
             We Empower businesses <br />
             with reliable, modern <br />
             digital solutions.

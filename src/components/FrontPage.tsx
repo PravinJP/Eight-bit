@@ -7,10 +7,10 @@ const FrontPage = () => {
           build,launch and scale
         </p>
       </div>
-      <div className="font-poppins leading-[72px] text-[72px]  text-white">
+      <div className="font-poppins leading-[72px] text-7xl  text-white">
         Your Vision,Engineered <br /> Web,Saas & Mobile Solutions
       </div>
-      <div className="font-poppins line3 text-[28px]  text-white">
+      <div className="font-poppins line3 text-3xl  text-white">
         Expertly crafted products -from design to deployment,
         <br />
         built to help startups,SMEs,and enterprise

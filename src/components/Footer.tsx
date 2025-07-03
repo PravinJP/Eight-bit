@@ -21,8 +21,7 @@ const Footer = () => {
           </button>
         </div>
         <div className="absolute bottom-0 right-2 mb-4 text-right ">
-         <p className="text-5xl ">Eight Bit Tech.</p>
-         <p>©2022-25 All rights reserved</p>
+         <img src="/Eight-bit.svg" alt="" />
         </div>
       </div>
 

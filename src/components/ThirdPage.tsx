@@ -69,20 +69,23 @@ const Test = () => {
       </div>
 
       {/* Component Grid */}
-      <div className="w-[1000px] grid items-center grid-cols-3 row-end-2 gap-10">
-        {comps.map((com, idx) => (
-          <motion.div
-            key={idx}
-            whileHover={{
-              boxShadow: "0 0 20px rgba(255, 165, 0, 0.7)", // Orange glow
-              transition: { duration: 0.3 },
-            }}
-            className="rounded-2xl"
-          >
-            <Component title={com.title} imgUrl={com.imgUrl} />
-          </motion.div>
-        ))}
-      </div>
+          
+
+<div className="w-[1000px] grid items-center grid-cols-3 row-end-2 gap-10">
+  {comps.map((com, idx) => (
+    <motion.div
+      key={idx}
+      whileHover={{
+        scale: 1.05, // Slightly enlarges the component
+        transition: { duration: 0.3 },
+      }}
+      className="rounded-2xl"
+    >
+      <Component title={com.title} imgUrl={com.imgUrl} />
+    </motion.div>
+  ))}
+</div>
+
     </motion.div>
   );
 };
