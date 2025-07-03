@@ -11,14 +11,14 @@ const Footer = ({setContactvisible} : {setContactvisible:React.Dispatch<React.Se
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-[1390px] h-[888px] gap-12 px-9 py-12 bg-[#393838] rounded-t-  4xl">
+    <div className="max-w-[1390px] h-[888px] gap-12 px-9 py-9 bg-[#393838] rounded-t-4xl ">
       {/* Top Rectangle */}
       <div className="relative w-full h-[458px] rounded-3xl bg-[url('/Footerful.svg')] bg-cover bg-center overflow-clip">
         {/* Right-Side */}
-        <div className="absolute w-[600px] gap-6 top-30 left-30 z-10">
+        <div className="absolute  gap-6 top-1/4 left-12 z-10">
           <div>
             <p className="w-full gap-1.5 text-6xl font-medium text-white">
-              So. What are you waiting for ?
+              So. What are you <br/> waiting for ?
             </p>
             <p className="text-2xl mt-2 text-white">
               Contact us and get the deal done

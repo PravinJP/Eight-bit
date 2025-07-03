@@ -6,7 +6,7 @@ const NavBar = () => {
       className="page-entry w-full max-w-[1390px] px-4 py-3.5 bg-white/10 backdrop-blur-[300px] rounded-[72px] flex justify-between items-center z-[2]"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1.1, duration: 0.6, ease: "easeOut" }} 
+      transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }} 
     >
       <div className="logo flex flex-row align-left items-center gap-2 mr-auto">
         <img scale-90 origin-left src="/logo.png" alt="" />

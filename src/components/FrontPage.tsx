@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { easeIn, motion } from "framer-motion";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -16,8 +16,9 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1, ease: "easeOut" },
+    
   },
+  
 };
 
 const buttonVariant = {
