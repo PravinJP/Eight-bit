@@ -1,13 +1,14 @@
-
-import './App.css'
-import LandingPage from './components/LandingPage'
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
+import ContactUs from "./components/ContactUs";
 
 function App() {
- 
-
   return (
-    LandingPage
-  )
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+    
+    </Routes>
+  );
 }
 
-export default App
+export default App;
