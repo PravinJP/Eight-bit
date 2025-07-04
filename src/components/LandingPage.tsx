@@ -26,7 +26,7 @@ const LandingPage = () => {
 
       <div className="children flex w-full gap-14  flex-col">
         {/* Sticky/Top NavBar */}
-        <NavBar />
+        <NavBar setContactvisible={setContactvisible} /> 
         {/* Main Content */}
         <FrontPage />
         {/* <GlassComponent/> */}

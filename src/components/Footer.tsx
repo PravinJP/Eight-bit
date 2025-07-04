@@ -55,18 +55,34 @@ const Footer = ({setContactvisible} : {setContactvisible:React.Dispatch<React.Se
             </div>
 
             <div className="gap-2 flex flex-row mt-8">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+              <a
+                href="https://instagram.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+              >
                 <InstagramIcon className="w-5 h-5 text-gray-500" />
-              </div>
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+              </a>
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+              >
                 <LinkedInIcon className="w-5 h-5 text-gray-500" />
-              </div>
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+              </a>
+              <a
+                href="mailto:eightbittechnologies8@gmail.com"
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+              >
                 <MailIconSmall className="w-5 h-5 text-gray-500" />
-              </div>
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+              </a>
+              <a
+                href="mailto:eightbittechnologies8@gmail.com"
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+              >
                 <MailIconSmall className="w-5 h-5 text-gray-500" />
-              </div>
+              </a>
             </div>
           </div>
 
@@ -85,11 +101,21 @@ const Footer = ({setContactvisible} : {setContactvisible:React.Dispatch<React.Se
               <div className="flex flex-col gap-6">
                 <div className="flex flex-row gap-3.5">
                   <PhoneIcon />
-                  <p className="text-xl font-medium text-white text-end">+91 9344461476</p>
+                  <a
+                    href="tel:+919344461476"
+                    className="text-xl font-medium text-white text-end hover:underline"
+                  >
+                    +91 9344461476
+                  </a>
                 </div>
                 <div className="flex flex-row gap-3.5">
                   <MailIcon />
-                  <p className="text-xl font-medium text-white text-end">8bit@eb.con</p>
+                  <a
+                    href="mailto:eightbittechnologies8@gmail.com"
+                    className="text-xl font-medium text-white text-end hover:underline"
+                  >
+                    8bit@eb.con
+                  </a>
                 </div>
                 <div className="flex flex-row gap-3.5 justify-center items-center">
                   <LocationIcon />

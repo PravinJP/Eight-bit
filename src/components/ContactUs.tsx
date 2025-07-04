@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import InstagramIcon from "./icons/InstagramIcon";
+import LinkedinIcon from "./icons/LinkedinIcon";
+import MailIconSmall from "./icons/MailIconSmall";
 
 const ContactUs = ({
   setContactvisible,
@@ -10,17 +12,13 @@ const ContactUs = ({
   const [message, setMessage] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneError, setPhoneError] = useState("");
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const isNumeric = /^\d+$/.test(phoneNumber);
-
     if (!isNumeric || phoneNumber.length !== 10) {
       setPhoneError("Please enter a valid 10-digit phone number");
       return;
@@ -29,12 +27,12 @@ const ContactUs = ({
     }
 
     const formData = {
-      access_key: "108b3f35-30cf-42b9-8bf1-a9d58a722234", // 🟠 Replace with your Web3Forms access key
+      access_key: "108b3f35-30cf-42b9-8bf1-a9d58a722234",
       name,
       email,
       phone: phoneNumber,
       message,
-      subject: "📨 New Inquiry via 8-Bit Website Contact Form"
+      subject: "📨 New Inquiry via 8-Bit Website Contact Form",
     };
 
     try {
@@ -49,7 +47,6 @@ const ContactUs = ({
       const result = await response.json();
       if (result.success) {
         alert("✅ Message sent successfully!");
-        // Clear the form
         setName("");
         setEmail("");
         setPhoneNumber("");
@@ -87,12 +84,9 @@ const ContactUs = ({
         exit="exit"
         className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-3xl p-8 w-full max-w-3xl shadow-xl relative text-white overflow-hidden"
       >
-        {/* Orange Glow - Top Left */}
         <div className="absolute top-0 left-0 w-40 h-40 bg-orange-500 opacity-60 rounded-full blur-3xl z-0" />
-        {/* Orange Glow - Bottom Right */}
         <div className="absolute bottom-0 right-0 w-40 h-40 bg-orange-500 opacity-60 rounded-full blur-3xl z-0" />
 
-        {/* Close Button */}
         <button
           onClick={() => setContactvisible(false)}
           className="absolute top-4 right-4 bg-white text-black rounded-full w-8 h-8 flex justify-center items-center text-xl z-10"
@@ -102,11 +96,7 @@ const ContactUs = ({
 
         <h2 className="text-4xl font-semibold mb-6 z-10 relative">Contact Us</h2>
 
-        {/* Form */}
-        <form
-          className="flex flex-col gap-6 z-10 relative"
-          onSubmit={handleSubmit}
-        >
+        <form className="flex flex-col gap-6 z-10 relative" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex flex-col w-full">
               <label className="mb-1 text-sm">Name</label>
@@ -138,6 +128,7 @@ const ContactUs = ({
               <div className="flex flex-col w-1/3">
                 <label className="mb-1 text-sm">Code</label>
                 <select
+                  name="country_code"
                   defaultValue="+91"
                   className="bg-black border rounded-md px-3 py-3 text-white"
                 >
@@ -177,6 +168,7 @@ const ContactUs = ({
             <label className="mb-1 text-sm">Message</label>
             <textarea
               rows={4}
+              name="message"
               maxLength={100}
               required
               value={message}
@@ -189,10 +181,7 @@ const ContactUs = ({
             </div>
           </div>
 
-          <div
-            className="text-black bg-white font-medium text-2xl px-7 py-5 rounded-3xl flex gap-2 mr-auto
-              hover:bg-orange-400 hover:text-white cursor-pointer"
-          >
+          <div className="text-black bg-white font-medium text-2xl px-7 py-5 rounded-3xl flex gap-2 mr-auto hover:bg-orange-400 hover:text-white cursor-pointer">
             <button
               type="submit"
               className="flex font-medium text-xl gap-2 items-center"
@@ -207,33 +196,29 @@ const ContactUs = ({
           {[
             {
               href: "https://instagram.com",
-              src: "/icons/instagram.svg",
-              alt: "Instagram",
+              icon: <InstagramIcon className="w-5 h-5" />,
             },
             {
               href: "https://linkedin.com",
-              src: "/icons/linkedin.svg",
-              alt: "LinkedIn",
+              icon: <LinkedinIcon className="w-5 h-5" />,
             },
             {
               href: "mailto:hello@example.com",
-              src: "/icons/mail.svg",
-              alt: "Mail",
+              icon: <MailIconSmall className="w-5 h-5" />,
             },
             {
               href: "mailto:support@example.com",
-              src: "/icons/mail.svg",
-              alt: "Support",
+              icon: <MailIconSmall className="w-5 h-5" />,
             },
-          ].map((icon, i) => (
+          ].map((item, i) => (
             <a
               key={i}
-              href={icon.href}
+              href={item.href}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white w-10 h-10 rounded-full flex items-center justify-center"
             >
-              <img src={icon.src} alt={icon.alt} className="w-5 h-5" />
+              {item.icon}
             </a>
           ))}
         </div>

@@ -61,7 +61,6 @@ const FrontPage = () => {
         built to help startups,SMEs,and enterprise
       </motion.div>
 
-      
     </motion.div>
   );
 };
