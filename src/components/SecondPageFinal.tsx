@@ -1,36 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import FullStackDevIcon from "./icons/FullStackDevIcon";
 
 const SecondPageFinal = () => {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setShow(true), 50);
-    return () => clearTimeout(timeout);
-  }, []);
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.5, // FULLY in view
+  });
 
   return (
-    <div className="w-full  flex flex-row max-w-[1390px]">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={show ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full  gap-[12px] justify-between flex flex-col"
-      >
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="w-full flex flex-row max-w-[1390px]"
+    >
+      {/* Left Side */}
+      <div className="w-full gap-[12px] justify-between flex flex-col">
         <div className="action-button-container flex">
-          <button className=" gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-medium flex items-center text-white">
+          <button className="gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-semibold flex items-center text-white">
             About us
             <img className="w-6 h-6" src="/about us.svg" alt="" />
           </button>
         </div>
-        <div className="action-button-container flex  mt-4">
+        <div className="action-button-container flex mt-4 ">
           <p className="text-5xl medium text-white leading-tight">
             We Empower businesses <br />
             with reliable, modern <br />
             digital solutions.
           </p>
         </div>
-        <div className=" mt-6 ">
+        <div className="mt-6">
           <p className="text-2xl norml text-white">
             We build robust web & mobile apps, SaaS platforms, and custom <br />
             solutions to help startups, SMEs, and enterprises grow faster.
@@ -38,92 +40,71 @@ const SecondPageFinal = () => {
         </div>
         <div className="gap-auto flex flex-row mt-8">
           <div className="flex flex-col justify-between">
-            <div className="  flex flex-row gap-[10px]">
-              <img
-                className="w-[39.5px] h-[39.5px]"
-                src="/fsdlogo.svg"
-                alt=""
-              />
-              <p className="font-poppins  text-white align-center">
+            <div className="flex flex-row gap-[10px]">
+              <img className="w-[39.5px] h-[39.5px]" src="/fsdlogo.svg" alt="" />
+              <p className="font-poppins text-white align-center">
                 Full stack development
               </p>
             </div>
-            <div className=" flex flex-row gap-[10px] mt-4">
-              <img
-                className="w-[39.5px] h-[39.5px]"
-                src="/Maintenancelogo.svg"
-                alt=""
-              />
-              <p className="font-poppins  text-white">Maintenance & Support</p>
+            <div className="flex flex-row gap-[10px] mt-4">
+              {/* <FullStackDevIcon className="w-[39.5] h-[39.5]"/> */}
+              <img className="w-[39.5px] h-[39.5px]" src="/Maintenancelogo.svg" alt="" />
+              <p className="font-poppins text-white">Maintenance & Support</p>
             </div>
             <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px] mt-6">
-              <img
-                className="w-[39.5px] h-[39.5px]"
-                src="/SeoLogo.svg"
-                alt=""
-              />
+              <img className="w-[39.5px] h-[39.5px]" src="/SeoLogo.svg" alt="" />
               <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white">
                 SEO & Optimization
               </p>
             </div>
           </div>
           <div className="flex flex-col justify-between">
-            <div className=" w-[318.5px] h-[39.5px] flex flex-row gap-[10px]">
-              <img
-                className="w-[39.5px] h-[39.5px]"
-                src="/fsdlogo.svg"
-                alt=""
-              />
+            <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px]">
+              <img className="w-[39.5px] h-[39.5px]" src="/fsdlogo.svg" alt="" />
               <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white align-center">
                 Full stack development
               </p>
             </div>
             <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px] mt-4">
-              <img
-                className="w-[39.5px] h-[39.5px]"
-                src="/Maintenancelogo.svg"
-                alt=""
-              />
+              <img className="w-[39.5px] h-[39.5px]" src="/Maintenancelogo.svg" alt="" />
               <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white">
                 Maintenance & Support
               </p>
             </div>
             <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px] mt-6">
-              <img
-                className="w-[39.5px] h-[39.5px]"
-                src="/SeoLogo.svg"
-                alt=""
-              />
+              <img className="w-[39.5px] h-[39.5px]" src="/SeoLogo.svg" alt="" />
               <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white">
                 SEO & Optimization
               </p>
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
+      {/* Right Card with 3D Tilt and Orange Glow on Hover */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={show ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        className="flex w-full  gradient-border-wrapper"
+        whileHover={{
+          rotateX: 5,
+          rotateY: -5,
+          scale: 1.02,
+          boxShadow: "0 0 40px 10px rgba(255, 165, 0, 0.5)", // orange glow
+          transition: { type: "spring", stiffness: 300, damping: 20 },
+        }}
+        className="flex w-full gradient-border-wrapper"
       >
-
-        {/* outer box */}
-        <div className=" relative w-full   rounded-[24px] gap-[-90px]   gradient-border-inner  items-center justify-center flex flex-col overflow-clip ">
-          
+        <div className="relative w-full rounded-[24px] gap-[-90px] bg-[#201F01] gradient-border-inner items-center justify-center flex flex-col overflow-clip">
           <div className="flex w-full h-full gradient-border-wrapper-top rounded-b-3xl">
-            <div className=" w-full h-full  rounded-[22px]  bg-[#201F01]/30  backdrop-blur-[100px]" />
+            <div className="w-full h-full rounded-[22px] bg-[#201F01]/50 backdrop-blur-[100px]" />
           </div>
-            {/* middle box */}
-          <div className="  flex items-center justify-center p-6 h-full rounded-[19.2px] top-1/2 right-1/2 aspect-square -my-[90px]  bg-white/5 backdrop-blur-2xl z-10">
+
+          <div className="flex items-center justify-center p-6 h-full rounded-[19.2px] top-1/2 right-1/2 aspect-square -my-[90px] bg-white/5 backdrop-blur-2xl z-10">
             <img className="w-3/4" src="/rising-logo-orange.svg" alt="" />
           </div>
-          {/* bottom box */}
-          <div className="flex w-full h-full gradient-border-wrapper-bottom rounded-t-3xl ">
-            <div className=" absolute w-full h-full  rounded-[22px]    bg-[#201F01]/30  backdrop-blur-[10px] gradient-border-inner">
+
+          <div className="flex w-full h-full gradient-border-wrapper-bottom rounded-t-3xl">
+            <div className="absolute w-full h-full rounded-[22px] bg-[#201F01]/50 backdrop-blur-[10px] gradient-border-inner">
               <img
-                className=" absolute -bottom-20    w-200 aspect-square "
+                className="absolute -bottom-30 w-200 aspect-square"
                 src="/orange2.svg"
                 alt=""
               />
@@ -131,7 +112,7 @@ const SecondPageFinal = () => {
           </div>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

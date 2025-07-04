@@ -33,6 +33,7 @@ export const containerVariants = {
     },
   },
 };
+
 export const itemVariants = {
   hidden: { opacity: 0, y: 10 },
   visible: {
@@ -47,7 +48,6 @@ export const itemVariants = {
 
 const TechStacksScroller: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-
   const { scrollYProgress } = useScroll({
     target: scrollRef,
     offset: ["start start", "end end"],
@@ -58,20 +58,37 @@ const TechStacksScroller: React.FC = () => {
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const transformed = latest * 300;
     setProgress(transformed);
-    console.log("Scroll Progress:", transformed);
   });
 
   const currentImage = useMemo(() => {
-    if (progress <= 100) return "/project1.svg"; // for MyBiz App
-    if (progress > 100 && progress <= 200) return "/project2.svg"; // for WEB DEVELOPMENT
-    return "/image3.png"; // for DESIGN SYSTEMS
+    if (progress <= 100) return "/project1.svg";
+    if (progress > 100 && progress <= 200) return "/project2.svg";
+    return "/image3.png";
   }, [progress]);
+
+  const comp = [
+    {
+      image: "/project1.svg",
+      title: "MyBiz App",
+      description: "A B2B mobile app for business analytics and workflows.",
+    },
+    {
+      image: "/project2.svg",
+      title: "Web Development",
+      description: "High-performance web apps built using modern frameworks.",
+    },
+    {
+      image: "/image3.png",
+      title: "Design Systems",
+      description: "Scalable UI component systems with accessibility and UX focus.",
+    },
+  ];
 
   return (
     <div ref={scrollRef} className="scroll-space h-[3000px] relative">
       <div className="outer-container-for-scroller w-full mx-auto max-w-[1290px] px-4 md:px-6 lg:px-8 sticky top-18 md:top-32 z-50">
         <div className="floating-container flex flex-col md:flex-row gap-8 w-full">
-          {/* left side */}
+          {/* Left side tech stacks */}
           <div className="left-side flex flex-col flex-5 gap-4 md:gap-8 w-full">
             <TechStack
               loadingPercentage={progress}
@@ -80,14 +97,14 @@ const TechStacksScroller: React.FC = () => {
               subtitle="A robust B2B app designed to streamline business workflows and analytics."
               barColor="FF6A01"
               barBgColor="ffff"
-              techStacks={[]}
+              techStacks={["React Native", "TypeScript", "Redux", "Firebase"]}
             />
             <TechStack
               loadingPercentage={progress % 100}
               isCondensed={progress > 100 && progress <= 200}
               title="WEB DEVELOPMENT"
-              subtitle="I build high-performance, scalable web apps using modern frameworks and tools, tailored for real-world use cases across industries."
-              techStacks={[]}
+              subtitle="High-performance, scalable web apps using modern frameworks."
+              techStacks={["React", "Next.js", "TailwindCSS", "Node.js"]}
               barColor="FF6A01"
               barBgColor="ffff"
             />
@@ -95,43 +112,50 @@ const TechStacksScroller: React.FC = () => {
               loadingPercentage={progress % 200}
               isCondensed={progress > 200 && progress <= 300}
               title="DESIGN SYSTEMS"
-              subtitle="Creating consistent, scalable, and reusable UI components across platforms with a strong foundation in UX, accessibility, and design tokens."
-              techStacks={[]}
+              subtitle="Reusable UI components across platforms with UX focus."
+              techStacks={["Storybook", "Figma", "Chromatic", "Design Tokens"]}
               barColor="FF6A01"
               barBgColor="ffff"
             />
           </div>
 
-          {/* right side */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="right-side-video-player w-full flex-4 flex"
-          >
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentImage}
-                src={currentImage}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="w-full h-[calc(100vh/3)] md:h-[calc(100vh/1.5)] self-center rounded-3xl object-cover object-center px-1.5"
-                alt="Tech stack visual"
-              />
-            </AnimatePresence>
-          </motion.div>
+          {/* Right side horizontal scroll cards */}
+          <div className="w-[500px] overflow-x-auto hide-scrollbar">
+            <div className="flex flex-row gap-[27px] min-w-max">
+              {comp.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-shrink-0"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  variants={itemVariants}
+                >
+                  <ProjectComponent
+                    image={item.image}
+                    title={item.title}
+                    description={item.description}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Background Decoration */}
+      <img
+        className="absolute left-[-150px] opacity-75 z-0"
+        src="/Ellipse 28.svg"
+        alt=""
+      />
     </div>
   );
 };
 
 export default TechStacksScroller;
 
-// TechStack component
 interface TechStackProps {
   title: string;
   subtitle: string;
@@ -151,53 +175,44 @@ const TechStack: React.FC<TechStackProps> = ({
   isCondensed,
   loadingPercentage,
 }) => {
-  const titleComp = useMemo(
-    () => (
-      <motion.h3
-        variants={textVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        className="text-white text-[clamp(18px,2vw,24px)] text-start w-full font-bold"
-      >
-        {title}
-      </motion.h3>
-    ),
-    []
-  );
+  const titleComp = useMemo(() => (
+    <motion.h3
+      variants={textVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="text-white text-[clamp(18px,2vw,24px)] text-start w-full font-bold"
+    >
+      {title}
+    </motion.h3>
+  ), []);
 
-  const subtitleComp = useMemo(
-    () => (
-      <motion.h4
-        variants={textVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        className="text-white text-[clamp(16px,3vw,24px)] text-start font-regular"
-      >
-        {subtitle}
-      </motion.h4>
-    ),
-    []
-  );
+  const subtitleComp = useMemo(() => (
+    <motion.h4
+      variants={textVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="text-white text-[clamp(16px,3vw,24px)] text-start font-regular"
+    >
+      {subtitle}
+    </motion.h4>
+  ), []);
 
-  const specialTexts = useMemo(
-    () => (
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="flex flex-row self-start flex-wrap gap-2.5"
-      >
-        {techStacks.map((techStack, index) => (
-          <motion.div key={index} variants={itemVariants}>
-            <SpecialText cancelMargin text={techStack} />
-          </motion.div>
-        ))}
-      </motion.div>
-    ),
-    []
-  );
+  const specialTexts = useMemo(() => (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-row self-start flex-wrap gap-2.5"
+    >
+      {techStacks.map((techStack, index) => (
+        <motion.div key={index} variants={itemVariants}>
+          <SpecialText cancelMargin text={techStack} />
+        </motion.div>
+      ))}
+    </motion.div>
+  ), []);
 
   if (!isCondensed)
     return (
@@ -227,11 +242,9 @@ const TechStack: React.FC<TechStackProps> = ({
           style={{
             backgroundColor: `#${barColor}`,
             height: `${loadingPercentage}%`,
-            transition: "height",
+            transition: "height 0.5s ease-out",
           }}
-        >
-          <h1 className="hidden">dummy-text-which-is-not-visible</h1>
-        </div>
+        />
       </motion.div>
 
       <div className="details-container flex flex-col gap-3 items-center justify-start">
@@ -243,7 +256,6 @@ const TechStack: React.FC<TechStackProps> = ({
   );
 };
 
-// SpecialText component
 interface SpecialTextProps {
   text: string;
   cancelMargin?: boolean;
@@ -256,45 +268,7 @@ export const SpecialText: React.FC<SpecialTextProps> = ({
 }) => {
   return (
     <motion.div
-      onClick={() => {
-        if (link) {
-          window.open(link, "_blank");
-        }
-      }}
-      whileTap={{
-        scale: 0.9,
-        rotate: [0, 2, -2, 2, -2, 0],
-        boxShadow: [
-          "0 0 0px rgba(102,59,255,0.3)",
-          "0 0 5px rgba(102,59,255,0.4)",
-          "0 0 10px rgba(102,59,255,0.6)",
-          "0 0 5px rgba(102,59,255,0.4)",
-          "0 0 0px rgba(102,59,255,0.3)",
-        ],
-        transition: {
-          duration: 0.8,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatType: "reverse",
-        },
-      }}
-      whileDrag={{
-        scale: 0.9,
-        rotate: [0, 2, -2, 2, -2, 0],
-        boxShadow: [
-          "0 0 0px rgba(102,59,255,0.3)",
-          "0 0 5px rgba(102,59,255,0.4)",
-          "0 0 10px rgba(102,59,255,0.6)",
-          "0 0 5px rgba(102,59,255,0.4)",
-          "0 0 0px rgba(102,59,255,0.3)",
-        ],
-        transition: {
-          duration: 0.8,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatType: "reverse",
-        },
-      }}
+      onClick={() => link && window.open(link, "_blank")}
       whileHover={{
         scale: 1.15,
         rotate: [0, 2, -2, 2, -2, 0],
@@ -312,13 +286,26 @@ export const SpecialText: React.FC<SpecialTextProps> = ({
           repeatType: "reverse",
         },
       }}
+      className="flex w-full text-center items-center justify-center-safe text-[clamp(14px,1.5vw,18px)] font-regular text-white px-3 py-2 mx-1 leading-tight bg-white/5 backdrop-blur-3xl outline-[2px] outline-[#663BFF]/60 rounded-xl"
       style={{
         margin: cancelMargin ? "0px" : "",
         cursor: link ? "pointer" : "",
       }}
-      className="flex w-full text-center items-center justify-center-safe text-[clamp(14px,1.5vw,18px)] font-regular text-white px-3 py-2 mx-1 leading-tight bg-white/5 backdrop-blur-3xl outline-[2px] outline-[#663BFF]/60 rounded-xl"
     >
       {text}
     </motion.div>
   );
 };
+
+// Dummy ProjectComponent – replace with your own
+const ProjectComponent: React.FC<{ image: string; title: string; description: string }> = ({
+  image,
+  title,
+  description,
+}) => (
+  <div className="bg-white rounded-xl shadow-md w-[250px] p-4 flex flex-col items-center justify-start text-center">
+    <img src={image} alt={title} className="w-[100px] h-[100px] object-contain mb-3" />
+    <h3 className="text-lg font-semibold mb-1">{title}</h3>
+    <p className="text-sm text-gray-600">{description}</p>
+  </div>
+);

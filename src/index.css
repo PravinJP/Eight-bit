@@ -90,6 +90,39 @@ body{
 .page-entry {
   animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
+.gradient-border-wrapper {
+  padding: 0px; /* border thickness */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  border-radius: 29px; /* outer radius */
+}
+
+.gradient-border-inner {
+  /* or your desired background */
+  border-radius: 24px; /* slightly less than wrapper for layering */
+}
+.gradient-border-wrapper-top {
+  padding: 2px; /* border thickness */
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  /* outer radius */
+}
+
+.gradient-border-wrapper-bottom {
+  padding: 2px; /* border thickness */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  /* outer radius */
+}
 
 
 

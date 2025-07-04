@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Component } from "./BoxComponent";
+import { useRef } from "react";
 
 export interface ComponentElements {
   title: ReactNode;
@@ -39,10 +40,17 @@ const Test = () => {
     },
   ];
 
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, {
+    once: true,
+    amount: 0.5,
+  });
+
   return (
     <motion.div
+      ref={containerRef}
       initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="w-full p-9 gap-12 flex flex-col justify-center items-center"
     >
@@ -69,23 +77,56 @@ const Test = () => {
       </div>
 
       {/* Component Grid */}
-          
+      <div className="w-[1000px] grid items-center grid-cols-3 row-end-2 gap-10">
+        {comps.map((com, idx) => {
+          const itemRef = useRef(null);
+          const itemInView = useInView(itemRef, { once: true, amount: 0.5 });
 
-<div className="w-[1000px] grid items-center grid-cols-3 row-end-2 gap-10">
-  {comps.map((com, idx) => (
-    <motion.div
-      key={idx}
-      whileHover={{
-        scale: 1.05, // Slightly enlarges the component
-        transition: { duration: 0.3 },
-      }}
-      className="rounded-2xl"
-    >
-      <Component title={com.title} imgUrl={com.imgUrl} />
-    </motion.div>
-  ))}
-</div>
-
+          return (
+            <motion.div
+              key={idx}
+              ref={itemRef}
+              initial={{ opacity: 0, y: 40 }}
+              animate={itemInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: idx * 0.1 }}
+              whileHover="hovered"
+              whileTap="tapped"
+              className="rounded-2xl"
+              style={{ perspective: 1000 }}
+            >
+              <motion.div
+                variants={{
+                  hovered: {
+                    scale: 1.05,
+                    rotateX: 5,
+                    rotateY: -5,
+                    boxShadow: "0 12px 35px rgba(255, 165, 0, 0.5)",
+                  },
+                  tapped: {
+                    scale: 1.06,
+                    rotateX: 8,
+                    rotateY: -8,
+                    boxShadow: "0 16px 45px rgba(255, 165, 0, 0.5)",
+                  },
+                }}
+                transition={{ type: "spring", stiffness: 120, damping: 16 }}
+                className="rounded-2xl"
+              >
+                <motion.div
+                  variants={{
+                    hovered: { scale: 1.03 },
+                    tapped: { scale: 1.05 },
+                  }}
+                  transition={{ type: "spring", stiffness: 140, damping: 18 }}
+                  className="rounded-2xl"
+                >
+                  <Component title={com.title} imgUrl={com.imgUrl} />
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          );
+        })}
+      </div>
     </motion.div>
   );
 };
