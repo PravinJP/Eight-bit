@@ -32,10 +32,14 @@ const Footer = ({setContactvisible} : {setContactvisible:React.Dispatch<React.Se
             <img className="w-[24px] h-[24px]" src="/arrowlogo.svg" alt="arrow" />
           </button>
         </div>
-        <div className="absolute bottom-0 right-2 mb-4 text-right text-white">
-          <p className="text-5xl">Eight Bit Tech.</p>
-          <p>©2022-25 All rights reserved</p>
-        </div>
+        <div className="absolute bottom-0 right-2 mb-4">
+          <img
+          src="/FT-8.svg" 
+          alt="Eight Bit Tech Copyright"
+          className="w-auto h-[120px]" 
+  />
+</div>
+
       </div>
 
       {/* down-footer */}
