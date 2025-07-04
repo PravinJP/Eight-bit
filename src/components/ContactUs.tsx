@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import InstagramIcon from "./icons/InstagramIcon";
 import LinkedinIcon from "./icons/LinkedinIcon";
 import MailIconSmall from "./icons/MailIconSmall";
@@ -12,10 +13,11 @@ const ContactUs = ({
   const [message, setMessage] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneError, setPhoneError] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const isNumeric = /^\d+$/.test(phoneNumber);
@@ -26,39 +28,35 @@ const ContactUs = ({
       setPhoneError("");
     }
 
-    const formData = {
-      access_key: "108b3f35-30cf-42b9-8bf1-a9d58a722234",
-      name,
-      email,
-      phone: phoneNumber,
-      message,
-      subject: "📨 New Inquiry via 8-Bit Website Contact Form",
-    };
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", "9cff3087-2c2d-4e45-a4af-d85b526b4e45");
+    formData.append("subject", "New Inquiry For 8-BIT");
+    formData.append("phone", phoneNumber);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
       const result = await response.json();
+
       if (result.success) {
-        alert("✅ Message sent successfully!");
-        setName("");
-        setEmail("");
-        setPhoneNumber("");
+        alert("Message sent successfully!");
         setMessage("");
-        setContactvisible(false);
+        setPhoneNumber("");
+        e.currentTarget.reset();
       } else {
-        alert("❌ Failed to send message.");
+        alert("Something went wrong. Please try again.");
       }
     } catch (error) {
-      console.error("Web3Forms Error:", error);
-      alert("❌ Something went wrong.");
+      console.error("Form submission error:", error);
+      alert("Error sending message.");
     }
+
+    setIsSubmitting(false);
   };
 
   const popupVariant = {
@@ -84,8 +82,10 @@ const ContactUs = ({
         exit="exit"
         className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-3xl p-8 w-full max-w-3xl shadow-xl relative text-white overflow-hidden"
       >
+
         <div className="absolute top-0 left-0 w-40 h-40 bg-orange-500 opacity-60 rounded-full blur-3xl z-0" />
         <div className="absolute bottom-0 right-0 w-40 h-40 bg-orange-500 opacity-60 rounded-full blur-3xl z-0" />
+
 
         <button
           onClick={() => setContactvisible(false)}
@@ -102,10 +102,9 @@ const ContactUs = ({
               <label className="mb-1 text-sm">Name</label>
               <input
                 type="text"
+                name="name"
                 required
                 placeholder="Your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
                 className="bg-black border rounded-md px-4 py-3 text-white placeholder:text-gray-400"
               />
             </div>
@@ -116,10 +115,9 @@ const ContactUs = ({
               <label className="mb-1 text-sm">Email</label>
               <input
                 type="email"
+                name="email"
                 required
                 placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 className="bg-black border rounded-md px-4 py-3 text-white placeholder:text-gray-400"
               />
             </div>
@@ -156,9 +154,7 @@ const ContactUs = ({
                   }`}
                 />
                 {phoneError && (
-                  <span className="text-red-500 text-sm mt-1">
-                    {phoneError}
-                  </span>
+                  <span className="text-red-500 text-sm mt-1">{phoneError}</span>
                 )}
               </div>
             </div>
@@ -170,7 +166,6 @@ const ContactUs = ({
               rows={4}
               name="message"
               maxLength={100}
-              required
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Your message..."
@@ -181,47 +176,47 @@ const ContactUs = ({
             </div>
           </div>
 
-          <div className="text-black bg-white font-medium text-2xl px-7 py-5 rounded-3xl flex gap-2 mr-auto hover:bg-orange-400 hover:text-white cursor-pointer">
+          <div className="flex justify-between items-center flex-wrap gap-4 mt-2">
             <button
               type="submit"
-              className="flex font-medium text-xl gap-2 items-center"
+              disabled={isSubmitting}
+              className="text-black bg-white font-medium text-2xl px-7 py-5 rounded-3xl flex gap-2 items-center hover:bg-orange-400 hover:text-white"
             >
-              Send message
+              {isSubmitting ? "Sending..." : "Send message"}
             </button>
+
+            <div className="flex gap-4">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white w-10 h-10 rounded-full flex items-center justify-center"
+              >
+                <InstagramIcon className="w-5 h-5 text-black" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white w-10 h-10 rounded-full flex items-center justify-center"
+              >
+                <LinkedinIcon className="w-5 h-5 text-black" />
+              </a>
+              <a
+                href="mailto:hello@example.com"
+                className="bg-white w-10 h-10 rounded-full flex items-center justify-center"
+              >
+                <MailIconSmall className="w-5 h-5 text-black" />
+              </a>
+              <a
+                href="mailto:support@example.com"
+                className="bg-white w-10 h-10 rounded-full flex items-center justify-center"
+              >
+                <MailIconSmall className="w-5 h-5 text-black" />
+              </a>
+            </div>
           </div>
         </form>
-
-        {/* Social Icons */}
-        <div className="flex gap-4 mt-8 justify-end z-10 relative">
-          {[
-            {
-              href: "https://instagram.com",
-              icon: <InstagramIcon className="w-5 h-5" />,
-            },
-            {
-              href: "https://linkedin.com",
-              icon: <LinkedinIcon className="w-5 h-5" />,
-            },
-            {
-              href: "mailto:hello@example.com",
-              icon: <MailIconSmall className="w-5 h-5" />,
-            },
-            {
-              href: "mailto:support@example.com",
-              icon: <MailIconSmall className="w-5 h-5" />,
-            },
-          ].map((item, i) => (
-            <a
-              key={i}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white w-10 h-10 rounded-full flex items-center justify-center"
-            >
-              {item.icon}
-            </a>
-          ))}
-        </div>
       </motion.div>
     </div>
   );

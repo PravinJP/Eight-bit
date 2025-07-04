@@ -28,15 +28,15 @@ const Test = () => {
     },
     {
       title: "Robust & Security",
-      imgUrl: "3rdPage.svg",
+      imgUrl: "P3-21.svg",
     },
     {
       title: "End-to-End Support",
-      imgUrl: "3rdPage.svg",
+      imgUrl: "P3-22.svg",
     },
     {
       title: "Transparent Pricing",
-      imgUrl: "3rdPage.svg",
+      imgUrl: "P3-33.svg",
     },
   ];
 
