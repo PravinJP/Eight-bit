@@ -61,14 +61,6 @@ const FrontPage = () => {
         built to help startups,SMEs,and enterprise
       </motion.div>
 
-      <motion.button
-        className="text-black bg-white font-medium text-2xl px-7 py-5 rounded-3xl transition-all duration-200 flex gap-2 mr-auto
-        hover:bg-orange-400 hover:text-white hover:scale-105 active:scale-95"
-        variants={buttonVariant}
-      >
-        Learn more
-        <img className="w-[24px] h-[24px]  flex justify-center  items-center" src="/arrowlogo.svg" alt="" />
-      </motion.button>
     </motion.div>
   );
 };

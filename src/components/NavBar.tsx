@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import type React from "react";
 
-const NavBar = () => {
+const NavBar = ({setContactvisible} : {setContactvisible:React.Dispatch<React.SetStateAction<boolean>>}) => {
+  const navigate = useNavigate();
+
   return (
     <motion.div
       className="page-entry w-full max-w-[1390px] px-4 py-3.5 bg-white/10 backdrop-blur-[300px] rounded-[72px] flex justify-between items-center z-[2]"
@@ -14,23 +18,31 @@ const NavBar = () => {
       </div>
 
       <div className="navigation-links flex flex-row items-center gap-8 mx-auto">
-<h3 className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600 transition-colors duration-200">
-  About
-</h3>
+        <h3 className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600 transition-colors duration-200">
+          About
+        </h3>
 
         <h3 className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600 transition-colors duration-200">
           Help & Support
         </h3>
-        <h3 className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600  transition-colors duration-200">
+
+        <h3
+          onClick={() => navigate("/thirdpage")}
+          className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600  transition-colors duration-200 cursor-pointer"
+        >
           Services
         </h3>
+
         <h3 className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600  transition-colors duration-200">
           Products
         </h3>
       </div>
 
       <div className="action-button-container flex ml-auto">
-        <button className="text-black font-semibold flex text-lg bg-white px-4 py-3 rounded-3xl transition-colors">
+        <button
+          onClick={() => setContactvisible(true)}
+          className="text-black font-semibold flex text-lg bg-white px-4 py-3 rounded-3xl transition-colors"
+        >
           Contact us
         </button>
       </div>
@@ -39,3 +51,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+  
