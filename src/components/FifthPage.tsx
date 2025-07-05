@@ -33,7 +33,6 @@ export const containerVariants = {
     },
   },
 };
-
 export const itemVariants = {
   hidden: { opacity: 0, y: 10 },
   visible: {
@@ -48,108 +47,98 @@ export const itemVariants = {
 
 const TechStacksScroller: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Track the scroll progress of the div with correct offset
   const { scrollYProgress } = useScroll({
     target: scrollRef,
     offset: ["start start", "end end"],
   });
 
+  // Transform scroll progress into numbers
+  const progressMotion = useTransform(scrollYProgress, [0, 1], [0, 300]);
+
+  // State to store number values
   const [progress, setProgress] = useState(0);
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const transformed = latest * 300;
-    setProgress(transformed);
-  });
+  // Convert MotionValue to numbers
+  useMotionValueEvent(progressMotion, "change", (v) => setProgress(v));
 
-  const currentImage = useMemo(() => {
-    if (progress <= 100) return "/project1.svg";
-    if (progress > 100 && progress <= 200) return "/project2.svg";
-    return "/image3.png";
-  }, [progress]);
+  useEffect(() => {
+    progressMotion.on("change", (value) => {
+      console.log("Scroll Progress:", value);
+    });
+  }, [progressMotion]);
 
-  const comp = [
-    {
-      image: "/project1.svg",
-      title: "MyBiz App",
-      description: "A B2B mobile app for business analytics and workflows.",
-    },
-    {
-      image: "/project2.svg",
-      title: "Web Development",
-      description: "High-performance web apps built using modern frameworks.",
-    },
-    {
-      image: "/image3.png",
-      title: "Design Systems",
-      description: "Scalable UI component systems with accessibility and UX focus.",
-    },
-  ];
+const currentImage = useMemo(() => {
+  if (progress <= 100) return "/project1.svg";
+  if (progress > 100 && progress <= 200) return "https://sabarish-vs-portfolio.vercel.app/Images/mentorsquare.png";
+  return "https://sabarish-vs-portfolio.vercel.app/Images/hoplite.png";
+}, [progress]);
+
 
   return (
-    <div ref={scrollRef} className="scroll-space h-[3000px] relative">
-      <div className="outer-container-for-scroller w-full mx-auto max-w-[1290px] px-4 md:px-6 lg:px-8 sticky top-18 md:top-32 z-50">
-        <div className="floating-container flex flex-col md:flex-row gap-8 w-full">
-          {/* Left side tech stacks */}
-          <div className="left-side flex flex-col flex-5 gap-4 md:gap-8 w-full">
+    <div ref={scrollRef} className="scroll-space h-[3000px]   relative ">
+      <div
+        className="outer-container-for-scroller w-full mx-auto max-w-[1290px] px-4 md:px-6 lg:px-8  sticky top-18 md:top-32   z-50 
+     "
+      >
+        <div className="floating-container flex flex-col md:flex-row gap-8 w-full ">
+          {/* left side */}
+          <div className="left-side flex flex-col flex-5 gap-4 md:gap-8  w-full">
             <TechStack
               loadingPercentage={progress}
               isCondensed={progress <= 100}
-              title="MyBiz App Mobile App | SaaS"
-              subtitle="A robust B2B app designed to streamline business workflows and analytics."
+              title="BuyMyTix"
+              subtitle="BuyMyTix is a full-stack ticket marketplace where users can buy and sell event tickets — with confidence. Fast, secure, and optimized for last-minute finds or safe reselling."
               barColor="FF6A01"
-              barBgColor="ffff"
-              techStacks={["React Native", "TypeScript", "Redux", "Firebase"]}
-            />
+              barBgColor="fefefe" techStacks={[]}            />
             <TechStack
               loadingPercentage={progress % 100}
               isCondensed={progress > 100 && progress <= 200}
-              title="WEB DEVELOPMENT"
-              subtitle="High-performance, scalable web apps using modern frameworks."
-              techStacks={["React", "Next.js", "TailwindCSS", "Node.js"]}
-              barColor="FF6A01"
-              barBgColor="ffff"
+              title="Mentor Square"
+              subtitle="Mentor Square is a mobile application designed for mentors, professors, and educators who need to efficiently and securely mark and manage student attendance."
+              techStacks={[
+                
+              ]}
+              barColor="55C37B"
+              barBgColor="fefefe"
             />
             <TechStack
               loadingPercentage={progress % 200}
               isCondensed={progress > 200 && progress <= 300}
-              title="DESIGN SYSTEMS"
-              subtitle="Reusable UI components across platforms with UX focus."
-              techStacks={["Storybook", "Figma", "Chromatic", "Design Tokens"]}
-              barColor="FF6A01"
-              barBgColor="ffff"
+              title="HopLite"
+              subtitle="It is a fitness tracking app lets users create or choose workout routines,track sets,reps,and weights-ideal for gym progress training."
+              techStacks={[
+                
+              ]}
+              barColor="4A7DFF"
+              barBgColor="1F3B80"
             />
           </div>
+          {/* right side */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="right-side-video-player w-full flex-4 flex "
+          >
+            <AnimatePresence mode="wait">
+  <motion.img
+    key={currentImage}
+    src={currentImage}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.4 }}
+    className="w-full h-[calc(100vh/3)] md:h-[calc(100vh/1.5)] self-center rounded-3xl object-cover object-center px-1.5"
+    alt="Tech stack visual"
+  />
+</AnimatePresence>
 
-          {/* Right side horizontal scroll cards */}
-          <div className="w-[500px] overflow-x-auto hide-scrollbar">
-            <div className="flex flex-row gap-[27px] min-w-max">
-              {comp.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="flex-shrink-0"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  variants={itemVariants}
-                >
-                  <ProjectComponent
-                    image={item.image}
-                    title={item.title}
-                    description={item.description}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* Background Decoration */}
-      <img
-        className="absolute left-[-150px] opacity-75 z-0"
-        src="/Ellipse 28.svg"
-        alt=""
-      />
     </div>
   );
 };
@@ -163,7 +152,7 @@ interface TechStackProps {
   barColor: string;
   barBgColor: string;
   isCondensed: boolean;
-  loadingPercentage: number;
+  loadingPercentage: number; //0-100
 }
 
 const TechStack: React.FC<TechStackProps> = ({
@@ -175,45 +164,52 @@ const TechStack: React.FC<TechStackProps> = ({
   isCondensed,
   loadingPercentage,
 }) => {
-  const titleComp = useMemo(() => (
-    <motion.h3
-      variants={textVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      className="text-white text-[clamp(18px,2vw,24px)] text-start w-full font-bold"
-    >
-      {title}
-    </motion.h3>
-  ), []);
+  const titleComp = useMemo(
+    () => (
+      <motion.h3
+        variants={textVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        className="text-white   text-[clamp(18px,2vw,24px)] text-start w-full font-bold "
+      >
+        {title}
+      </motion.h3>
+    ),
+    []
+  );
+  const specialTexts = useMemo(
+    () => (
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-row self-start flex-wrap gap-2.5"
+      >
+        {techStacks.map((techStack, index) => (
+          <motion.div key={index} variants={itemVariants}>
+            <SpecialText cancelMargin text={techStack} />
+          </motion.div>
+        ))}
+      </motion.div>
+    ),
+    []
+  );
 
-  const subtitleComp = useMemo(() => (
-    <motion.h4
-      variants={textVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      className="text-white text-[clamp(16px,3vw,24px)] text-start font-regular"
-    >
-      {subtitle}
-    </motion.h4>
-  ), []);
-
-  const specialTexts = useMemo(() => (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="flex flex-row self-start flex-wrap gap-2.5"
-    >
-      {techStacks.map((techStack, index) => (
-        <motion.div key={index} variants={itemVariants}>
-          <SpecialText cancelMargin text={techStack} />
-        </motion.div>
-      ))}
-    </motion.div>
-  ), []);
-
+  const subtitleComp = useMemo(
+    () => (
+      <motion.h4
+        variants={textVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        className="text-white text-[clamp(16px,3vw,24px)] text-start font-regular  "
+      >
+        {subtitle}
+      </motion.h4>
+    ),
+    []
+  );
   if (!isCondensed)
     return (
       <motion.h3
@@ -221,20 +217,19 @@ const TechStack: React.FC<TechStackProps> = ({
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="text-white/50 text-[clamp(12px,2vw,24px)] text-start w-full font-regular"
+        className="text-white/50 text-[clamp(12px,2vw,24px)]  text-start w-full font-regular "
       >
         {title}
       </motion.h3>
     );
-
   return (
-    <motion.div className="tech-stack-container flex flex-row gap-3 md:gap-6 w-full">
+    <motion.div className="tech-stack-container flex flex-row  gap-3 md:gap-6 w-full">
       <motion.div
         variants={barVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="loading-bar-container w-1 md:w-2 min-h-full rounded-2xl overflow-clip"
+        className="loading-bar-container w-1 md:w-2 min-h-full rounded-2xl overflow-clip "
         style={{ backgroundColor: `#${barBgColor}` }}
       >
         <div
@@ -242,9 +237,11 @@ const TechStack: React.FC<TechStackProps> = ({
           style={{
             backgroundColor: `#${barColor}`,
             height: `${loadingPercentage}%`,
-            transition: "height 0.5s ease-out",
+            transition: "height ",
           }}
-        />
+        >
+          <h1 className="hidden">dummy-text-which-is-not-visible</h1>
+        </div>
       </motion.div>
 
       <div className="details-container flex flex-col gap-3 items-center justify-start">
@@ -268,7 +265,45 @@ export const SpecialText: React.FC<SpecialTextProps> = ({
 }) => {
   return (
     <motion.div
-      onClick={() => link && window.open(link, "_blank")}
+      onClick={() => {
+        if (link) {
+          window.open(link, "_blank");
+        }
+      }}
+      whileTap={{
+        scale: 0.9,
+        rotate: [0, 2, -2, 2, -2, 0],
+        boxShadow: [
+          "0 0 0px rgba(102,59,255,0.3)",
+          "0 0 5px rgba(102,59,255,0.4)",
+          "0 0 10px rgba(102,59,255,0.6)",
+          "0 0 5px rgba(102,59,255,0.4)",
+          "0 0 0px rgba(102,59,255,0.3)",
+        ],
+        transition: {
+          duration: 0.8,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse",
+        },
+      }}
+      whileDrag={{
+        scale: 0.9,
+        rotate: [0, 2, -2, 2, -2, 0],
+        boxShadow: [
+          "0 0 0px rgba(102,59,255,0.3)",
+          "0 0 5px rgba(102,59,255,0.4)",
+          "0 0 10px rgba(102,59,255,0.6)",
+          "0 0 5px rgba(102,59,255,0.4)",
+          "0 0 0px rgba(102,59,255,0.3)",
+        ],
+        transition: {
+          duration: 0.8,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse",
+        },
+      }}
       whileHover={{
         scale: 1.15,
         rotate: [0, 2, -2, 2, -2, 0],
@@ -286,26 +321,13 @@ export const SpecialText: React.FC<SpecialTextProps> = ({
           repeatType: "reverse",
         },
       }}
-      className="flex w-full text-center items-center justify-center-safe text-[clamp(14px,1.5vw,18px)] font-regular text-white px-3 py-2 mx-1 leading-tight bg-white/5 backdrop-blur-3xl outline-[2px] outline-[#663BFF]/60 rounded-xl"
       style={{
         margin: cancelMargin ? "0px" : "",
         cursor: link ? "pointer" : "",
       }}
+      className="flex w-full text-center  items-center  justify-center-safe  text-[clamp(14px,1.5vw,18px)] font-regular  text-white px-3 py-2 mx-1 leading-tight bg-white/5 backdrop-blur-3xl outline-[2px] outline-[#663BFF]/60 rounded-xl"
     >
       {text}
     </motion.div>
   );
 };
-
-// Dummy ProjectComponent – replace with your own
-const ProjectComponent: React.FC<{ image: string; title: string; description: string }> = ({
-  image,
-  title,
-  description,
-}) => (
-  <div className="bg-white rounded-xl shadow-md w-[250px] p-4 flex flex-col items-center justify-start text-center">
-    <img src={image} alt={title} className="w-[100px] h-[100px] object-contain mb-3" />
-    <h3 className="text-lg font-semibold mb-1">{title}</h3>
-    <p className="text-sm text-gray-600">{description}</p>
-  </div>
-);

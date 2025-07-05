@@ -77,12 +77,7 @@ const Footer = ({setContactvisible} : {setContactvisible:React.Dispatch<React.Se
               >
                 <MailIconSmall className="w-5 h-5 text-gray-500" />
               </a>
-              <a
-                href="mailto:eightbittechnologies8@gmail.com"
-                className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
-              >
-                <MailIconSmall className="w-5 h-5 text-gray-500" />
-              </a>
+              
             </div>
           </div>
 

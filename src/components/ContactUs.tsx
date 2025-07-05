@@ -31,7 +31,7 @@ const ContactUs = ({
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", "9cff3087-2c2d-4e45-a4af-d85b526b4e45");
+    formData.append("access_key", "e9bd6460-2f36-488d-97cf-8eeb747f9086");
     formData.append("subject", "New Inquiry For 8-BIT");
     formData.append("phone", phoneNumber);
 
@@ -208,12 +208,7 @@ const ContactUs = ({
               >
                 <MailIconSmall className="w-5 h-5 text-black" />
               </a>
-              <a
-                href="mailto:support@example.com"
-                className="bg-white w-10 h-10 rounded-full flex items-center justify-center"
-              >
-                <MailIconSmall className="w-5 h-5 text-black" />
-              </a>
+              
             </div>
           </div>
         </form>
