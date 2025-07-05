@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import GlassComponent from "./GlassComponent";
 
 const SecondPageFinal = () => {
   const [show, setShow] = useState(false);
@@ -10,7 +11,7 @@ const SecondPageFinal = () => {
   }, []);
 
   return (
-    <div className="w-full  flex flex-row max-w-[1390px]">
+    <div className="w-full  flex flex-row max-w-[1390px] items-center">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
@@ -102,31 +103,7 @@ const SecondPageFinal = () => {
         </div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={show ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        className="flex w-full  gradient-border-wrapper"
-      >
-        <div className=" relative w-full   rounded-[24px] gap-[-90px]  bg-[#201F01] gradient-border-inner  items-center justify-center flex flex-col overflow-clip ">
-          <div className="flex w-full h-full gradient-border-wrapper-top rounded-b-3xl">
-            <div className=" w-full h-full  rounded-[22px]  bg-[#201F01]/50   backdrop-blur-[100px]" />
-          </div>
-
-          <div className="  flex items-center justify-center p-6 h-full rounded-[19.2px] top-1/2 right-1/2 aspect-square -my-[90px]  bg-white/5 backdrop-blur-2xl z-10">
-            <img className="w-3/4" src="/rising-logo-orange.svg" alt="" />
-          </div>
-          <div className="flex w-full h-full gradient-border-wrapper-bottom rounded-t-3xl ">
-            <div className=" absolute w-full h-full  rounded-[22px]  bg-[#201F01]/50   backdrop-blur-[10px] gradient-border-inner">
-              <img
-                className=" absolute -bottom-30    w-200 aspect-square "
-                src="/orange2.svg"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </motion.div>
+      <GlassComponent />
     </div>
   );
 };
