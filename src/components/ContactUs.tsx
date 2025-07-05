@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { motion, easeOut } from "framer-motion";
 import InstagramIcon from "./icons/InstagramIcon";
-import LinkedinIcon from "./icons/LinkedinIcon";
+import LinkedinIcon from "./icons/LinkedInIcon"; // ✅ Corrected casing
 import MailIconSmall from "./icons/MailIconSmall";
 
 const ContactUs = ({
@@ -14,8 +13,6 @@ const ContactUs = ({
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,12 +61,12 @@ const ContactUs = ({
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
+      transition: { duration: 0.5, ease: easeOut }, // ✅ Fix for Framer Motion
     },
     exit: {
       opacity: 0,
       scale: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
+      transition: { duration: 0.5, ease: easeOut },
     },
   };
 
@@ -82,10 +79,8 @@ const ContactUs = ({
         exit="exit"
         className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-3xl p-8 w-full max-w-3xl shadow-xl relative text-white overflow-hidden"
       >
-
         <div className="absolute top-0 left-0 w-40 h-40 bg-orange-500 opacity-60 rounded-full blur-3xl z-0" />
         <div className="absolute bottom-0 right-0 w-40 h-40 bg-orange-500 opacity-60 rounded-full blur-3xl z-0" />
-
 
         <button
           onClick={() => setContactvisible(false)}
@@ -99,8 +94,9 @@ const ContactUs = ({
         <form className="flex flex-col gap-6 z-10 relative" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex flex-col w-full">
-              <label className="mb-1 text-sm">Name</label>
+              <label className="mb-1 text-sm" htmlFor="name">Name</label>
               <input
+                id="name"
                 type="text"
                 name="name"
                 required
@@ -112,8 +108,9 @@ const ContactUs = ({
 
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex flex-col w-full">
-              <label className="mb-1 text-sm">Email</label>
+              <label className="mb-1 text-sm" htmlFor="email">Email</label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 required
@@ -124,8 +121,9 @@ const ContactUs = ({
 
             <div className="flex gap-2 w-full">
               <div className="flex flex-col w-1/3">
-                <label className="mb-1 text-sm">Code</label>
+                <label className="mb-1 text-sm" htmlFor="country_code">Code</label>
                 <select
+                  id="country_code"
                   name="country_code"
                   defaultValue="+91"
                   className="bg-black border rounded-md px-3 py-3 text-white"
@@ -136,8 +134,9 @@ const ContactUs = ({
               </div>
 
               <div className="flex flex-col w-2/3">
-                <label className="mb-1 text-sm">Phone number</label>
+                <label className="mb-1 text-sm" htmlFor="phone_number">Phone number</label>
                 <input
+                  id="phone_number"
                   type="tel"
                   maxLength={10}
                   inputMode="numeric"
@@ -161,8 +160,9 @@ const ContactUs = ({
           </div>
 
           <div className="flex flex-col">
-            <label className="mb-1 text-sm">Message</label>
+            <label className="mb-1 text-sm" htmlFor="message">Message</label>
             <textarea
+              id="message"
               rows={4}
               name="message"
               maxLength={100}
@@ -208,7 +208,6 @@ const ContactUs = ({
               >
                 <MailIconSmall className="w-5 h-5 text-black" />
               </a>
-              
             </div>
           </div>
         </form>

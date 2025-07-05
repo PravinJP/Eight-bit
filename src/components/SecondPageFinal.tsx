@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import  { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import FullStackDevIcon from "./icons/FullStackDevIcon";
+
 
 const SecondPageFinal = () => {
   const ref = useRef(null);

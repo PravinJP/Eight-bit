@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
-import ContactUs from "./components/ContactUs";
+
 
 function App() {
   return (

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import PhoneIcon from "./icons/PhoneIcon";
 import MailIcon from "./icons/MailIcon";
 import LocationIcon from "./icons/LocationIcon";
@@ -7,18 +6,20 @@ import LinkedInIcon from "./icons/LinkedInIcon";
 import MailIconSmall from "./icons/MailIconSmall";
 import type React from "react";
 
-const Footer = ({setContactvisible} : {setContactvisible:React.Dispatch<React.SetStateAction<boolean>>}) => {
-  const navigate = useNavigate();
-
+const Footer = ({
+  setContactvisible,
+}: {
+  setContactvisible: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
     <div className="max-w-[1390px] h-[888px] gap-12 px-9 py-9 bg-[#393838] rounded-t-4xl ">
       {/* Top Rectangle */}
       <div className="relative w-full h-[458px] rounded-3xl bg-[url('/Footerful.svg')] bg-cover bg-center overflow-clip">
         {/* Right-Side */}
-        <div className="absolute  gap-6 top-1/4 left-12 z-10">
+        <div className="absolute gap-6 top-1/4 left-12 z-10">
           <div>
             <p className="w-full gap-1.5 text-6xl font-medium text-white">
-              So. What are you <br/> waiting for ?
+              So. What are you <br /> waiting for ?
             </p>
             <p className="text-2xl mt-2 text-white">
               Contact us and get the deal done
@@ -33,7 +34,7 @@ const Footer = ({setContactvisible} : {setContactvisible:React.Dispatch<React.Se
           </button>
         </div>
         <div className="absolute bottom-0 right-2 mb-4 text-right text-white">
-          <img src="/Eight-bit.svg" alt="" />
+          <img src="/Eight-bit.svg" alt="Eight Bit Logo" />
         </div>
       </div>
 
@@ -77,7 +78,6 @@ const Footer = ({setContactvisible} : {setContactvisible:React.Dispatch<React.Se
               >
                 <MailIconSmall className="w-5 h-5 text-gray-500" />
               </a>
-              
             </div>
           </div>
 
@@ -109,7 +109,7 @@ const Footer = ({setContactvisible} : {setContactvisible:React.Dispatch<React.Se
                     href="mailto:eightbittechnologies8@gmail.com"
                     className="text-xl font-medium text-white text-end hover:underline"
                   >
-                    8bit@eb.con
+                    eightbittechnologies8@gmail.com
                   </a>
                 </div>
                 <div className="flex flex-row gap-3.5 justify-center items-center">

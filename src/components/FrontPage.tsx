@@ -1,4 +1,4 @@
-import { easeIn, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -21,13 +21,13 @@ const itemVariants = {
   
 };
 
-const buttonVariant = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {  ease: "easeOut" },
-  },
-};
+// const buttonVariant = {
+//   hidden: { opacity: 0 },
+//   visible: {
+//     opacity: 1,
+//     transition: {  ease: "easeOut" },
+//   },
+// };
 
 const FrontPage = () => {
   return (
