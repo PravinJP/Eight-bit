@@ -38,19 +38,19 @@ const FrontPage = () => {
       animate="visible"
     >
       <motion.div
-        className="first-line w-fill   flex flex-row align-left items-center gap-2 mr-auto "
+        className="first-line w-fill   flex flex-row align-left  items-center gap-2 mr-auto  "
         variants={itemVariants}
       >
-        <img className="mt-10 " src="/pic1.svg" alt="Illustration" />
-        <p className=" font-poppins mt-10 text-[28px] text-white">
-          build,launch and scale
+        <img className=" " src="/pic1.svg" alt="Illustration" />
+        <p className=" font-poppins  text-2xl text-white  ">
+          Build, Launch and Scale
         </p>
       </motion.div>
       <motion.div
-        className="font-poppins leading-[72px] text-[72px]  text-white"
+        className="font-poppins leading-tight text-6xl  text-white"
         variants={itemVariants}
       >
-        Your Vision,Engineered <br /> Web,Saas & Mobile Solutions
+        Engineering Your Vision into <br /> Web, SaaS, and Mobile Solutions.
       </motion.div>
       <motion.div
         className="font-poppins line3 text-[28px]  text-white"
@@ -58,7 +58,7 @@ const FrontPage = () => {
       >
         Expertly crafted products -from design to deployment,
         <br />
-        built to help startups,SMEs,and enterprise
+        built to help startups, SMEs and enterprise
       </motion.div>
 
     </motion.div>

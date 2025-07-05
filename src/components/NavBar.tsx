@@ -18,22 +18,22 @@ const NavBar = ({setContactvisible} : {setContactvisible:React.Dispatch<React.Se
       </div>
 
       <div className="navigation-links flex flex-row items-center gap-8 mx-auto">
-        <h3 className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600 transition-colors duration-200">
+        <h3 className="text-white cursor-pointer font-medium text-xl font-poppins line-height-[28] hover:text-gray-800 transition-colors duration-200">
           About
         </h3>
 
-        <h3 className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600 transition-colors duration-200">
+        <h3 className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-gray-800 transition-colors duration-200 cursor-pointer">
           Help & Support
         </h3>
 
         <h3
           onClick={() => navigate("/thirdpage")}
-          className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600  transition-colors duration-200 cursor-pointer"
+          className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-gray-800  transition-colors duration-200 cursor-pointer"
         >
           Services
         </h3>
 
-        <h3 className="text-white font-medium text-xl font-poppins line-height-[28] hover:text-purple-600  transition-colors duration-200">
+        <h3 className="text-white cursor-pointer font-medium text-xl font-poppins line-height-[28] hover:text-gray-800  transition-colors duration-200">
           Products
         </h3>
       </div>

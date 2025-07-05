@@ -39,39 +39,39 @@ const SecondPageFinal = () => {
           </p>
         </div>
         <div className="gap-auto flex flex-row mt-8">
-          <div className="flex flex-col justify-between">
-            <div className="flex flex-row gap-[10px]">
-              <img className="w-[39.5px] h-[39.5px]" src="./P2-11.svg" alt="" />
+          <div className="flex flex-col justify-between gap-4">
+            <div className="flex flex-row  gap-[10px] items-center">
+              <img className="w-[36px] h-[36px] " src="./P2-11.svg" alt="" />
               <p className="font-poppins text-white align-center">
                 Full stack development
               </p>
             </div>
-            <div className="flex flex-row gap-[10px] mt-4">
-              <img className="w-[39.5px] h-[39.5px]" src="./P2-12.svg" alt="" />
+            <div className="flex flex-row gap-[10px] items-center ">
+              <img className="w-[36px] h-[36px]" src="./P2-12.svg" alt="" />
               <p className="font-poppins text-white">Maintenance & Support</p>
             </div>
-            <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px] mt-6">
-              <img className="w-[39.5px] h-[39.5px]" src="./P2-13.svg" alt="" />
+            <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px] items-center ">
+              <img className="w-[36px] h-[36px]" src="./P2-13.svg" alt="" />
               <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white">
                 SEO & Optimization
               </p>
             </div>
           </div>
-          <div className="flex flex-col justify-between">
-            <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px]">
-              <img className="w-[39.5px] h-[39.5px]" src="./P2-21.svg" alt="" />
+          <div className="flex flex-col justify-between gap-4">
+            <div className=" flex flex-row gap-[10px] items-center ">
+              <img className="w-[36px] h-[36px]" src="./P2-21.svg" alt="" />
               <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white align-center">
                 Full stack development
               </p>
             </div>
-            <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px] mt-4">
-              <img className="w-[39.5px] h-[39.5px]" src="./P2-22.svg" alt="" />
+            <div className=" flex flex-row gap-[10px] items-center ">
+              <img className="w-[36px] h-[36px]" src="./P2-22.svg" alt="" />
               <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white">
                 Maintenance & Support
               </p>
             </div>
-            <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px] mt-6">
-              <img className="w-[39.5px] h-[39.5px]" src="./P2-23.svg" alt="" />
+            <div className=" flex flex-row gap-[10px] items-center ">
+              <img className="w-[36px] h-[36px]" src="./P2-23.svg" alt="" />
               <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white">
                 SEO & Optimization
               </p>

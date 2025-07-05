@@ -92,9 +92,9 @@ const Footer = ({
 
             {/* Contact Us section */}
             <div className="flex flex-col gap-8">
-              <p className="text-2xl font-medium text-white text-left">Contact Us</p>
-              <div className="flex flex-col gap-6">
-                <div className="flex flex-row gap-3.5">
+              <p className="text-2xl font-medium text-white text-right">Contact Us</p>
+              <div className="flex flex-col gap-6 justify-end w-full">
+                <div className="flex flex-row gap-3.5 justify-end">
                   <PhoneIcon />
                   <a
                     href="tel:+919344461476"
@@ -103,7 +103,7 @@ const Footer = ({
                     +91 9344461476
                   </a>
                 </div>
-                <div className="flex flex-row gap-3.5">
+                <div className="flex flex-row gap-3.5 justify-end">
                   <MailIcon />
                   <a
                     href="mailto:eightbittechnologies8@gmail.com"
@@ -112,7 +112,7 @@ const Footer = ({
                     eightbittechnologies8@gmail.com
                   </a>
                 </div>
-                <div className="flex flex-row gap-3.5 justify-center items-center">
+                <div className="flex flex-row gap-3.5 justify-end ">
                   <LocationIcon />
                   <p className="text-xl font-medium text-white text-end">
                     43 C, Veerapandi <br /> Coimbatore 34
