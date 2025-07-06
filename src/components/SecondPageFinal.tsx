@@ -1,12 +1,11 @@
-import  { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-
 
 const SecondPageFinal = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
-    amount: 0.5, // FULLY in view
+    amount: 0.5,
   });
 
   return (
@@ -25,56 +24,50 @@ const SecondPageFinal = () => {
             <img className="w-6 h-6" src="/about us.svg" alt="" />
           </button>
         </div>
-        <div className="action-button-container flex mt-4 ">
+
+        <div className="action-button-container flex mt-4">
           <p className="text-5xl medium text-white leading-tight">
             We Empower businesses <br />
             with reliable, modern <br />
             digital solutions.
           </p>
         </div>
+
         <div className="mt-6">
           <p className="text-2xl norml text-white">
             We build robust web & mobile apps, SaaS platforms, and custom <br />
             solutions to help startups, SMEs, and enterprises grow faster.
           </p>
         </div>
+
         <div className="gap-auto flex flex-row mt-8">
           <div className="flex flex-col justify-between gap-4">
-            <div className="flex flex-row  gap-[10px] items-center">
-              <img className="w-[36px] h-[36px] " src="./P2-11.svg" alt="" />
-              <p className="font-poppins text-white align-center">
-                Full stack development
-              </p>
+            <div className="flex flex-row gap-[10px] items-center">
+              <img className="w-[36px] h-[36px]" src="./P2-11.svg" alt="" />
+              <p className="font-poppins text-white">Full stack development</p>
             </div>
-            <div className="flex flex-row gap-[10px] items-center ">
+            <div className="flex flex-row gap-[10px] items-center">
               <img className="w-[36px] h-[36px]" src="./P2-12.svg" alt="" />
               <p className="font-poppins text-white">Maintenance & Support</p>
             </div>
-            <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px] items-center ">
+            <div className="w-[318.5px] h-[39.5px] flex flex-row gap-[10px] items-center">
               <img className="w-[36px] h-[36px]" src="./P2-13.svg" alt="" />
-              <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white">
-                SEO & Optimization
-              </p>
+              <p className="font-poppins text-white">SEO & Optimization</p>
             </div>
           </div>
-          <div className="flex flex-col justify-between gap-4">
-            <div className=" flex flex-row gap-[10px] items-center ">
+
+          <div className="flex flex-col justify-between gap-4 ml-8">
+            <div className="flex flex-row gap-[10px] items-center">
               <img className="w-[36px] h-[36px]" src="./P2-21.svg" alt="" />
-              <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white align-center">
-                Full stack development
-              </p>
+              <p className="font-poppins text-white">Full stack development</p>
             </div>
-            <div className=" flex flex-row gap-[10px] items-center ">
+            <div className="flex flex-row gap-[10px] items-center">
               <img className="w-[36px] h-[36px]" src="./P2-22.svg" alt="" />
-              <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white">
-                Maintenance & Support
-              </p>
+              <p className="font-poppins text-white">Maintenance & Support</p>
             </div>
-            <div className=" flex flex-row gap-[10px] items-center ">
+            <div className="flex flex-row gap-[10px] items-center">
               <img className="w-[36px] h-[36px]" src="./P2-23.svg" alt="" />
-              <p className="font-poppins line-height-[38px] line-spacing-[-0.6px] text-white">
-                SEO & Optimization
-              </p>
+              <p className="font-poppins text-white">SEO & Optimization</p>
             </div>
           </div>
         </div>
@@ -86,7 +79,7 @@ const SecondPageFinal = () => {
           rotateX: 5,
           rotateY: -5,
           scale: 1.02,
-          boxShadow: "0 0 40px 10px rgba(255, 165, 0, 0.5)", // orange glow
+          boxShadow: "0 0 40px 10px rgba(255, 165, 0, 0.5)",
           transition: { type: "spring", stiffness: 300, damping: 20 },
         }}
         className="flex w-full gradient-border-wrapper"
