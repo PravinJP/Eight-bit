@@ -59,6 +59,12 @@ const TechStacksScroller: React.FC = () => {
 
   return (
     <div ref={scrollRef} className="scroll-space h-[3000px] relative">
+        <div className="action-button-container flex mb-10 justify-center ">
+          <button className="gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-semibold flex items-center text-white">
+            Our Products
+            <img className="w-6 h-6" src="/about us.svg" alt="" />
+          </button>
+        </div>
       <div className="outer-container-for-scroller w-full mx-auto max-w-[1290px] px-4 md:px-6 lg:px-8 sticky top-18 md:top-32 z-50">
         <div className="floating-container flex flex-col md:flex-row gap-8 w-full">
           <div className="left-side flex flex-col flex-5 gap-4 md:gap-8 w-full">

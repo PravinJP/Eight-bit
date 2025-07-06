@@ -31,7 +31,7 @@ const GlassComponent: React.FC = () => {
           initial={{ scale: 0 }}
           animate={isInView ? { scale: 1 } : {}}
           transition={{ delay: 1, duration: 0.3, ease: "backOut" }}
-          className="flex items-center justify-center p-5 h-full rounded-[40px] top-1/2 right-1/2 aspect-square -my-[90px] bg-white/5 backdrop-blur-2xl"
+          className="flex items-center justify-center p-5 h-full rounded-[40px] top-1/2 right-1/2 aspect-square -my-[90px] bg-white/5 backdrop-blur-2xl z-10"
         >
           <img className="w-3/4" src="/rising-logo-orange.svg" alt="icon" />
         </motion.div>

@@ -63,7 +63,7 @@ const Test = () => {
             transition: { duration: 0.6, ease: "easeOut" },
           }}
           viewport={{ once: true }}
-          className="gap-[10px] px-[18px] py-[16px]  backdrop-blur-2xl rounded-[32px] text-xl font-medium flex items-center text-white"
+          className="gap-[10px] px-[18px] py-[16px] backdrop-blur-2xl rounded-[32px] text-xl font-medium flex items-center text-white"
         >
           All About us
           <img className="w-[24px] h-[24px]" src="/about us.svg" alt="" />
@@ -78,54 +78,49 @@ const Test = () => {
 
       {/* Component Grid */}
       <div className="w-[1000px] grid items-center grid-cols-3 row-end-2 gap-10">
-        {comps.map((com, idx) => {
-          const itemRef = useRef(null);
-          const itemInView = useInView(itemRef, { once: true, amount: 0.5 });
-
-          return (
+        {comps.map((com, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7, delay: idx * 0.1 }}
+            whileHover="hovered"
+            whileTap="tapped"
+            className="rounded-2xl"
+            style={{ perspective: 1000 }}
+          >
             <motion.div
-              key={idx}
-              ref={itemRef}
-              initial={{ opacity: 0, y: 40 }}
-              animate={itemInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: idx * 0.1 }}
-              whileHover="hovered"
-              whileTap="tapped"
+              variants={{
+                hovered: {
+                  scale: 1.05,
+                  rotateX: 5,
+                  rotateY: -5,
+                  boxShadow: "0 12px 35px rgba(255, 165, 0, 0.5)",
+                },
+                tapped: {
+                  scale: 1.06,
+                  rotateX: 8,
+                  rotateY: -8,
+                  boxShadow: "0 16px 45px rgba(255, 165, 0, 0.5)",
+                },
+              }}
+              transition={{ type: "spring", stiffness: 120, damping: 16 }}
               className="rounded-2xl"
-              style={{ perspective: 1000 }}
             >
               <motion.div
                 variants={{
-                  hovered: {
-                    scale: 1.05,
-                    rotateX: 5,
-                    rotateY: -5,
-                    boxShadow: "0 12px 35px rgba(255, 165, 0, 0.5)",
-                  },
-                  tapped: {
-                    scale: 1.06,
-                    rotateX: 8,
-                    rotateY: -8,
-                    boxShadow: "0 16px 45px rgba(255, 165, 0, 0.5)",
-                  },
+                  hovered: { scale: 1.03 },
+                  tapped: { scale: 1.05 },
                 }}
-                transition={{ type: "spring", stiffness: 120, damping: 16 }}
+                transition={{ type: "spring", stiffness: 140, damping: 18 }}
                 className="rounded-2xl"
               >
-                <motion.div
-                  variants={{
-                    hovered: { scale: 1.03 },
-                    tapped: { scale: 1.05 },
-                  }}
-                  transition={{ type: "spring", stiffness: 140, damping: 18 }}
-                  className="rounded-2xl"
-                >
-                  <Component title={com.title} imgUrl={com.imgUrl} />
-                </motion.div>
+                <Component title={com.title} imgUrl={com.imgUrl} />
               </motion.div>
             </motion.div>
-          );
-        })}
+          </motion.div>
+        ))}
       </div>
     </motion.div>
   );

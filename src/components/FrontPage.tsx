@@ -1,4 +1,4 @@
-import {  motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -16,9 +16,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    
   },
-  
 };
 
 // const buttonVariant = {
@@ -32,7 +30,7 @@ const itemVariants = {
 const FrontPage = () => {
   return (
     <motion.div
-      className="page-entry w-full max-w-[1390px]  gap-8 flex flex-col align-left h-[65vh]"
+      className="page-entry w-full max-w-[1390px]  gap-8 flex flex-col align-left h-[70vh]"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -59,8 +57,11 @@ const FrontPage = () => {
         Expertly crafted products -from design to deployment,
         <br />
         built to help startups, SMEs and enterprise
+        <p className="text-left text-white text-2xl mt-20">
+          Ready to turn your idea into reality? Let’s build something
+          extraordinary together.
+        </p>
       </motion.div>
-
     </motion.div>
   );
 };
