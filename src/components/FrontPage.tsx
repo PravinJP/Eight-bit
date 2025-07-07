@@ -30,7 +30,7 @@ const itemVariants = {
 const FrontPage = () => {
   return (
     <motion.div
-      className="page-entry w-full max-w-[1390px]  gap-8 flex flex-col align-left h-[70vh]"
+      className="page-entry w-full max-w-[1390px]  gap-6 justify-center flex flex-col align-left h-[70vh] max-h-[800px]"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -57,10 +57,6 @@ const FrontPage = () => {
         Expertly crafted products -from design to deployment,
         <br />
         built to help startups, SMEs and enterprise
-        <p className="text-left text-white text-2xl mt-20">
-          Ready to turn your idea into reality? Let’s build something
-          extraordinary together.
-        </p>
       </motion.div>
     </motion.div>
   );

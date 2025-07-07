@@ -12,7 +12,7 @@ const Footer = ({
   setContactvisible: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <div className="max-w-[1390px] gap-12 px-9 pt-9 pb-0 bg-[#393838] rounded-t-4xl ">
+    <div className="max-w-[1390px] flex w-full flex-col gap-12 px-9 pt-9 pb-0 bg-[#393838] rounded-t-4xl ">
       {/* Top Rectangle */}
       <div className="relative w-full h-[458px] rounded-3xl bg-[url('/Footerful.svg')] bg-cover bg-center overflow-clip">
         {/* Right-Side */}
@@ -27,10 +27,14 @@ const Footer = ({
           </div>
           <button
             onClick={() => setContactvisible(true)}
-            className="text-black bg-white font-medium text-2xl px-[26px] py-[18px] rounded-4xl transition-colors flex gap-2 mr-auto mt-2 items-center cursor-pointer"
+            className="text-black mt-3 bg-white font-medium text-2xl px-[26px] py-[18px] rounded-4xl transition-colors flex gap-2 mr-auto  items-center cursor-pointer"
           >
             Contact us
-            <img className="w-[24px] h-[24px]" src="/arrowlogo.svg" alt="arrow" />
+            <img
+              className="w-[24px] h-[24px]"
+              src="/arrowlogo.svg"
+              alt="arrow"
+            />
           </button>
         </div>
         <div className="absolute bottom-0 right-2 mb-4 text-right text-white">
@@ -92,10 +96,11 @@ const Footer = ({
 
             {/* Contact Us section */}
             <div className="flex flex-col gap-8">
-              <p className="text-2xl font-medium text-white text-right">Contact Us</p>
+              <p className="text-2xl font-medium text-white text-right">
+                Contact Us
+              </p>
               <div className="flex flex-col gap-6 justify-end w-full">
                 <div className="flex flex-row gap-3.5 justify-end">
-                  
                   <a
                     href="tel:+919344461476"
                     className="text-xl font-medium text-white text-end hover:underline"
@@ -105,7 +110,6 @@ const Footer = ({
                   <PhoneIcon />
                 </div>
                 <div className="flex flex-row gap-3.5 justify-end">
-                  
                   <a
                     href="mailto:eightbittechnologies8@gmail.com"
                     className="text-xl font-medium text-white text-end hover:underline"
@@ -115,7 +119,6 @@ const Footer = ({
                   <MailIcon />
                 </div>
                 <div className="flex flex-row gap-3.5 justify-end ">
-                  
                   <p className="text-xl font-medium text-white text-end">
                     43 C, Veerapandi <br /> Coimbatore 34
                   </p>

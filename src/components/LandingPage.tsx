@@ -9,7 +9,6 @@ import ContactUs from "./ContactUs";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-
 const LandingPage = () => {
   const [isContactVisible, setContactvisible] = useState(false);
   return (
@@ -24,9 +23,9 @@ const LandingPage = () => {
         alt="gradient"
       />
 
-      <div className="children flex w-full gap-14  flex-col">
+      <div className="children flex w-full gap-14  flex-col items-center justify-center">
         {/* Sticky/Top NavBar */}
-        <NavBar setContactvisible={setContactvisible} /> 
+        <NavBar setContactvisible={setContactvisible} />
         {/* Main Content */}
         <FrontPage />
         {/* <GlassComponent/> */}

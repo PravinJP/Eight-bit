@@ -53,19 +53,23 @@ const TechStacksScroller: React.FC = () => {
 
   const currentImage = useMemo(() => {
     if (progress <= 100) return "/project1.svg";
-    if (progress <= 200) return "https://sabarish-vs-portfolio.vercel.app/Images/mentorsquare.png";
+    if (progress <= 200)
+      return "https://sabarish-vs-portfolio.vercel.app/Images/mentorsquare.png";
     return "https://sabarish-vs-portfolio.vercel.app/Images/hoplite.png";
   }, [progress]);
 
   return (
-    <div ref={scrollRef} className="scroll-space h-[3000px] relative">
-        <div className="action-button-container flex mb-10 justify-center ">
-          <button className="gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-semibold flex items-center text-white">
-            Our Products
-            <img className="w-6 h-6" src="/about us.svg" alt="" />
-          </button>
-        </div>
-      <div className="outer-container-for-scroller w-full mx-auto max-w-[1290px] px-4 md:px-6 lg:px-8 sticky top-18 md:top-32 z-50">
+    <div
+      ref={scrollRef}
+      className="scroll-space h-[3000px] max-w-[1390px] relative"
+    >
+      <div className="action-button-container flex mb-10 justify-start ">
+        <button className="gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-medium flex items-start text-white">
+          Our Products
+          <img className="w-6 h-6" src="/about us.svg" alt="" />
+        </button>
+      </div>
+      <div className="outer-container-for-scroller w-full  sticky top-18 md:top-32 z-50">
         <div className="floating-container flex flex-col md:flex-row gap-8 w-full">
           <div className="left-side flex flex-col flex-5 gap-4 md:gap-8 w-full">
             <TechStack
@@ -111,7 +115,7 @@ const TechStacksScroller: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
-                className="w-full h-[calc(100vh/3)] md:h-[calc(100vh/1.5)] self-center rounded-3xl object-cover object-center px-1.5"
+                className="w-full  aspect-square max-h-[400px] max-w-full self-center rounded-3xl object-cover object-center px-1.5"
                 alt="Tech stack visual"
               />
             </AnimatePresence>
@@ -146,7 +150,7 @@ const TechStack: React.FC<TechStackProps> = ({
   const titleComp = useMemo(
     () => (
       <motion.h3
-        className="text-white text-[clamp(18px,2vw,24px)] text-start w-full font-bold"
+        className="text-white text-[clamp(18px,2vw,24px)] text-start w-full font-semibold"
         initial="hidden"
         animate="visible"
         exit="exit"

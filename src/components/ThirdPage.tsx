@@ -96,7 +96,6 @@ const Test = () => {
                   scale: 1.05,
                   rotateX: 5,
                   rotateY: -5,
-                  boxShadow: "0 12px 35px rgba(255, 165, 0, 0.5)",
                 },
                 tapped: {
                   scale: 1.06,

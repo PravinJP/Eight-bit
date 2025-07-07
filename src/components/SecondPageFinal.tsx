@@ -18,7 +18,7 @@ const SecondPageFinal = () => {
         className="w-full gap-[12px] justify-between flex flex-col"
       >
         <div className="action-button-container flex">
-          <button className="gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-semibold flex items-center text-white">
+          <button className="gap-[10px] px-[18px] py-[16px] bg-white/10 backdrop-blur-2xl rounded-[32px] text-xl font-medium flex items-center text-white">
             About us
             <img className="w-6 h-6" src="/about us.svg" alt="" />
           </button>
