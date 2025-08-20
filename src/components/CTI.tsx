@@ -11,30 +11,34 @@ const CTI = () => {
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="w-full gap-2.5 flex px-9 self-center justify-center items-center"
+      className="w-full gap-2.5 flex px-4 sm:px-9 justify-center items-center"
     >
-      <div className="relative w-full h-[379px] max-w-[1390px] flex justify-center self-center items-center rounded-4xl overflow-clip">
-        <img className="absolute top-[-0px]" src="/ctiellipse.svg" alt="" />
+      <div className="relative w-full h-auto sm:h-[379px] max-w-[1390px] flex justify-center items-center rounded-4xl overflow-hidden py-6 sm:py-0">
+        
+        {/* Orange Patterns - visible on all devices */}
         <img
-          className="absolute left-[-100px] bottom-[-50px]"
+          className="absolute top-[-30px] left-1/2 -translate-x-1/2 w-[150px] sm:w-auto sm:top-0 sm:left-auto sm:translate-x-0"
+          src="/ctiellipse.svg"
+          alt=""
+        />
+        <img
+          className="absolute left-[-50px] bottom-[-40px] w-[140px] sm:w-auto sm:left-[-100px] sm:bottom-[-50px]"
           src="/ctiellipse2.svg"
           alt=""
         />
 
-        <div className="flex justify-center items-center flex-col">
-          <div>
-            <p className="text-center text-white text-5xl font-medium">
-              Innovate. Build. Grow. <br /> End-to-End Web, App & SaaS
-              Development.
-            </p>
-          </div>
-          <div className="mt-2">
-            <p className="text-center text-white">
-              Tailored digital solutions — from concept to launch, built to
-              empower <br />
-              startups, SMEs, and large enterprises.
-            </p>
-          </div>
+        {/* Content */}
+        <div className="flex flex-col items-center px-4 text-center relative z-10">
+          <p className="text-white text-lg sm:text-2xl md:text-4xl lg:text-5xl font-medium leading-snug sm:leading-tight">
+            Innovate. Build. Grow. <br className="hidden sm:block" />
+            End-to-End Web, App & SaaS Development.
+          </p>
+
+          <p className="mt-3 text-white text-xs sm:text-sm md:text-base">
+            Tailored digital solutions — from concept to launch, built to
+            empower <br className="hidden sm:block" />
+            startups, SMEs, and large enterprises.
+          </p>
         </div>
       </div>
     </motion.div>

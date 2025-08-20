@@ -12,121 +12,113 @@ const Footer = ({
   setContactvisible: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <div className="max-w-[1390px] flex w-full flex-col gap-12 px-9 pt-9 pb-0 bg-[#393838] rounded-t-4xl ">
+    <div className="max-w-[1390px] w-full flex flex-col gap-12 px-6 sm:px-9 pt-9 pb-0 bg-[#393838] rounded-t-4xl">
       {/* Top Rectangle */}
-      <div className="relative w-full h-[458px] rounded-3xl bg-[url('/Footerful.svg')] bg-cover bg-center overflow-clip">
-        {/* Right-Side */}
-        <div className="absolute gap-6 top-1/4 left-12 z-10">
-          <div>
-            <p className="w-full gap-1.5 text-6xl font-medium text-white">
-              So. What are you <br /> waiting for ?
-            </p>
-            <p className="text-2xl mt-2 text-white">
-              Contact us and get the deal done
-            </p>
-          </div>
+      <div className="relative w-full h-[320px] sm:h-[458px] rounded-3xl bg-[url('/Footerful.svg')] bg-cover bg-center overflow-hidden">
+        <div className="absolute top-10 sm:top-1/4 left-6 sm:left-12 z-10 space-y-2 sm:space-y-6">
+          <p className="text-xl sm:text-5xl font-medium text-white leading-tight">
+            So. What are you <br /> waiting for?
+          </p>
+          <p className="text-sm sm:text-xl text-white">
+            Contact us and get the deal done
+          </p>
           <button
             onClick={() => setContactvisible(true)}
-            className="text-black mt-3 bg-white font-medium text-2xl px-[26px] py-[18px] rounded-4xl transition-colors flex gap-2 mr-auto  items-center cursor-pointer"
+            className="text-black mt-2 sm:mt-3 bg-white font-medium text-xs sm:text-lg px-3 sm:px-6 py-1.5 sm:py-3 rounded-3xl transition-colors flex gap-2 items-center cursor-pointer"
           >
             Contact us
             <img
-              className="w-[24px] h-[24px]"
+              className="w-3.5 h-3.5 sm:w-5 sm:h-5"
               src="/arrowlogo.svg"
               alt="arrow"
             />
           </button>
         </div>
-        <div className="absolute bottom-0 right-2 mb-4 text-right text-white">
+        <div className="absolute bottom-0 right-2 mb-4">
           <img src="/Eight-bit.svg" alt="Eight Bit Logo" />
         </div>
       </div>
 
-      {/* down-footer */}
-      <div className="w-full h-[306px] gap-2.5 py-8 mt-4">
-        <div className="flex flex-row justify-between">
-          {/* left */}
-          <div>
-            <div className="logo flex flex-row align-left items-center gap-2 mr-auto">
-              <img src="/logo.png" alt="Logo" />
-              <p className="text-2xl vt323-regular text-white items-center">
+      {/* Lower Footer */}
+      <div className="w-full py-8 mt-4">
+        <div className="flex flex-col lg:flex-row justify-between gap-10">
+          {/* Left Column */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div className="flex items-center gap-2 justify-center">
+              <img src="/logo.png" alt="Logo" className="w-8 sm:w-auto" />
+              <p className="text-lg sm:text-2xl vt323-regular text-white">
                 Eight Bit Tech
               </p>
             </div>
-            <div className="mt-6">
-              <p className="text-white text-2xl font-medium">
-                Innovate smarter <br /> Scale Faster
-              </p>
-            </div>
 
-            <div className="gap-2 flex flex-row mt-8">
+            <p className="text-white text-base sm:text-xl font-medium mt-4 sm:mt-6 leading-snug">
+              Innovate smarter <br className="hidden sm:inline" /> Scale Faster
+            </p>
+
+            <div className="flex gap-3 mt-4 sm:mt-6 justify-center">
               <a
-                href="https://instagram.com/yourusername"
+                href="https://instagram.com"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center"
               >
-                <InstagramIcon className="w-5 h-5 text-gray-500" />
+                <InstagramIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center"
               >
-                <LinkedInIcon className="w-5 h-5 text-gray-500" />
+                <LinkedInIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" />
               </a>
               <a
                 href="mailto:eightbittechnologies8@gmail.com"
-                className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center"
               >
-                <MailIconSmall className="w-5 h-5 text-gray-500" />
+                <MailIconSmall className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" />
               </a>
             </div>
           </div>
 
-          {/* right */}
-          <div className="gap-14 flex flex-row text-right">
-            <div className="flex flex-col gap-8">
-              <p className="text-2xl font-medium text-white">Pages</p>
-              <p className="text-xl font-medium text-white">Home</p>
-              <p className="text-xl font-medium text-white">Help & support</p>
-              <p className="text-xl font-medium text-white">FAQs</p>
+          {/* Right Column */}
+          <div className="flex flex-col sm:flex-row gap-10 text-white items-center sm:items-start">
+            {/* Pages */}
+            <div className="hidden sm:flex flex-col gap-4 items-start">
+              <p className="text-lg sm:text-xl font-semibold">Pages</p>
+              <p className="text-sm sm:text-base">Home</p>
+              <p className="text-sm sm:text-base">Help & Support</p>
+              <p className="text-sm sm:text-base">FAQs</p>
             </div>
 
-            {/* Contact Us section */}
-            <div className="flex flex-col gap-8">
-              <p className="text-2xl font-medium text-white text-right">
-                Contact Us
-              </p>
-              <div className="flex flex-col gap-6 justify-end w-full">
-                <div className="flex flex-row gap-3.5 justify-end">
+            {/* Contact */}
+            <div className="flex flex-col gap-3 sm:gap-4 items-center sm:items-end text-center sm:text-right">
+              <p className="text-lg sm:text-xl font-semibold">Contact Us</p>
+              <div className="flex flex-col gap-3 sm:gap-4 items-center sm:items-end">
+                <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center sm:justify-end">
+                  <PhoneIcon className="w-4 h-4 sm:w-auto" />
                   <a
                     href="tel:+919344461476"
-                    className="text-xl font-medium text-white text-end hover:underline"
+                    className="text-sm sm:text-base hover:underline break-all"
                   >
                     +91 9344461476
                   </a>
-                  <PhoneIcon />
                 </div>
-                <div className="flex flex-row gap-3.5 justify-end">
+                <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center sm:justify-end">
+                  <MailIcon className="w-4 h-4 sm:w-auto" />
                   <a
                     href="mailto:eightbittechnologies8@gmail.com"
-                    className="text-xl font-medium text-white text-end hover:underline"
+                    className="text-sm sm:text-base hover:underline break-all"
                   >
                     eightbittechnologies8@gmail.com
                   </a>
-                  <MailIcon />
                 </div>
-                <div className="flex flex-row gap-3.5 justify-end ">
-                  <p className="text-xl font-medium text-white text-end">
+                <div className="flex items-start gap-2 sm:gap-3 justify-center sm:justify-end">
+                  <LocationIcon className="w-4 h-4 sm:w-auto" />
+                  <p className="text-sm sm:text-base text-left sm:text-right leading-snug">
                     43 C, Veerapandi <br /> Coimbatore 34
                   </p>
-                  <LocationIcon />
                 </div>
               </div>
             </div>
-            {/* End of Contact Us */}
           </div>
         </div>
       </div>
