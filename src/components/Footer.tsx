@@ -59,6 +59,7 @@ const Footer = ({
               <a
                 href="https://instagram.com"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center"
               >
                 <InstagramIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" />
@@ -66,6 +67,7 @@ const Footer = ({
               <a
                 href="https://linkedin.com"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center"
               >
                 <LinkedInIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" />

@@ -1,6 +1,17 @@
-const PhoneIcon = () => (
-  <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+import type React from "react";
+
+type IconProps = React.SVGProps<SVGSVGElement>
+
+const PhoneIcon: React.FC<IconProps> = (props) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    {...props} // this spreads className, style, onClick, etc.
+  >
     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.05-.24c1.12.37 2.33.57 3.54.57.55 0 1 .45 1 1v3.5a1 1 0 01-1 1C10.06 21 3 13.94 3 5.5A1 1 0 014 4.5h3.5c.55 0 1 .45 1 1 0 1.21.2 2.42.57 3.54.13.36.04.77-.24 1.05l-2.21 2.2z" />
   </svg>
 );
+
 export default PhoneIcon;
